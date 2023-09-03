@@ -21,5 +21,5 @@ public class Etat {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idEtat;
-	private Boolean statutEtat;
+	private String statutEtat;
 }

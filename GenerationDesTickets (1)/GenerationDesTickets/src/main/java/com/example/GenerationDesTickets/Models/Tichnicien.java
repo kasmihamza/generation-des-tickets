@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -20,7 +21,8 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode
 @DiscriminatorColumn(name = "user_type")
 public class Tichnicien extends Utilisateurs {
-	private String typeTech;
+	@OneToOne
+	private Type typeTech;
 	private Boolean disponsibilite;
 	@OneToMany
 	private List<Ticket> ticketaffecte;

@@ -13,6 +13,7 @@ import com.example.GenerationDesTickets.Models.Tichnicien;
 import com.example.GenerationDesTickets.Reposetory.PhoneAssistantRepo;
 import com.example.GenerationDesTickets.Reposetory.RoleRepo;
 import com.example.GenerationDesTickets.Reposetory.TechnicienRepo;
+import com.example.GenerationDesTickets.Reposetory.TypeRepo;
 import com.example.GenerationDesTickets.dto.PhoneAssistantTable;
 import com.example.GenerationDesTickets.dto.TechnicienByTypeTable;
 import com.example.GenerationDesTickets.dto.TechnicienTable;
@@ -31,6 +32,8 @@ public class SuperviseurController implements SuperviseurApi {
 	private final TechnicienRepo technicienRepo;
 	@Autowired
 	private final RoleRepo roleRepo;
+	@Autowired
+	private final TypeRepo typeRepo;
 
 	@Override
 	public ResponseEntity<ResponseMessage> AjouterPhoneAssistant(PhoneAssistantForm phoneAssistantForm) {
@@ -84,7 +87,7 @@ public class SuperviseurController implements SuperviseurApi {
 		technicien.setTelephoneUti(technicienForm.getTelephone());
 		technicien.setEmailUti(technicienForm.getEmail());
 		technicien.setPasswordUti(technicienForm.getPassword());
-		technicien.setTypeTech(technicienForm.getTypetechnicien());
+		technicien.setTypeTech(typeRepo.findById(technicienForm.getIdtypetechnicien()).get());
 		technicien.setDisponsibilite(false);
 		technicien.setRole(roleRepo.findById((long) 2).get());
 		technicienRepo.save(technicien);
@@ -115,7 +118,7 @@ public class SuperviseurController implements SuperviseurApi {
 			techniciendto.setNome(allTechnicien.get(i).getLastNameUti());
 			techniciendto.setPrenom(allTechnicien.get(i).getFirstNameUti());
 			techniciendto.setDesponsibilite(allTechnicien.get(i).getDisponsibilite());
-			techniciendto.setTypetech(allTechnicien.get(i).getTypeTech());
+			techniciendto.setTypetech(allTechnicien.get(i).getTypeTech().getNameType());
 			technicienTable.add(techniciendto);
 		}
 		return technicienTable;
@@ -124,7 +127,7 @@ public class SuperviseurController implements SuperviseurApi {
 	@Override
 	public List<TechnicienByTypeTable> getallMaterialTechnicienDespo() {
 		// TODO Auto-generated method stub
-		List<Tichnicien> allTechnicien = technicienRepo.findTechnicienByType("Materiel");
+		List<Tichnicien> allTechnicien = technicienRepo.findTechnicienByType((long) 1);
 		List<TechnicienByTypeTable> technicienTable = new ArrayList();
 		for (int i = 0; i < allTechnicien.size(); i++) {
 			TechnicienByTypeTable techniciendto = new TechnicienByTypeTable();
@@ -141,7 +144,7 @@ public class SuperviseurController implements SuperviseurApi {
 	@Override
 	public List<TechnicienByTypeTable> getallLogicielTechnicienDespo() {
 		// TODO Auto-generated method stub
-		List<Tichnicien> allTechnicien = technicienRepo.findTechnicienByType("Logiciel");
+		List<Tichnicien> allTechnicien = technicienRepo.findTechnicienByType((long) 2);
 		List<TechnicienByTypeTable> technicienTable = new ArrayList();
 		for (int i = 0; i < allTechnicien.size(); i++) {
 			TechnicienByTypeTable techniciendto = new TechnicienByTypeTable();
