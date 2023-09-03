@@ -21,7 +21,5 @@ public class Type {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idType;
-	private String codeType;
-	private String libelleType;
-	private Boolean statutType;
+	private String nameType;
 }

@@ -22,7 +22,4 @@ public class Departement {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idDep;
 	private String nameDep;
-	private String libelleDep;
-	private String codeDep;
-	private Boolean statutDep;
 }

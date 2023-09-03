@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -24,10 +25,10 @@ public class Demandeur {
 	private Long idDem;
 	private String firstNameDem;
 	private String lastNameDem;
-	private String adresseDem;
 	private String telephoneDem;
 	private String emailDem;
-	private String codeDem;
-	private String libelleDem;
-	private Boolean statutDem;
+	private String service;
+	@ManyToOne
+	private Client client;
+
 }

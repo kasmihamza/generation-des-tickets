@@ -1,11 +1,10 @@
 package com.example.GenerationDesTickets.Models;
 
-import java.util.Date;
+import java.util.List;
 
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -19,11 +18,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-public class Historique {
+@DiscriminatorColumn(name = "user_type")
+public class PhoneAssistant extends Utilisateurs {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idHist;
-	private String descriptionHist;
-	private Date dateHist;
+	@OneToMany
+	private List<Ticket> ticketAjouter;
+
 }

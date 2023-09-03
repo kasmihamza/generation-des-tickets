@@ -21,8 +21,6 @@ public class Source {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idSource;
-	private String codeSource;
-	private String libelleSource;
-	private Boolean statutSource;
+	private String nameSource;
 
 }

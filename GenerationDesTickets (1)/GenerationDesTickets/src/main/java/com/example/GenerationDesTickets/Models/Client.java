@@ -21,13 +21,8 @@ public class Client {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idDem;
-	private String firstNameDem;
-	private String lastNameDem;
-	private Boolean adresseDem;
-	private Boolean telephoneDem;
-	private Boolean emailDem;
-	private Boolean codeDem;
-	private Boolean libelleDem;
-	private Boolean statutDem;
+	private Long id;
+	private String name;
+	private String adresse;
+
 }

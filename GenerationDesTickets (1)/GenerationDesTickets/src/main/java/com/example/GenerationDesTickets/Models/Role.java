@@ -21,7 +21,6 @@ public class Role {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idRole;
-	private String libelleRole;
-	private String codeRole;
-	private Boolean statutRole;
+	private String roleName;
+
 }
