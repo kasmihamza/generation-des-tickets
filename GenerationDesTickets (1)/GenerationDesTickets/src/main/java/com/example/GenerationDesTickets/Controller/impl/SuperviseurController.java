@@ -14,9 +14,11 @@ import com.example.GenerationDesTickets.Reposetory.PhoneAssistantRepo;
 import com.example.GenerationDesTickets.Reposetory.RoleRepo;
 import com.example.GenerationDesTickets.Reposetory.TechnicienRepo;
 import com.example.GenerationDesTickets.dto.PhoneAssistantTable;
+import com.example.GenerationDesTickets.dto.TechnicienByTypeTable;
 import com.example.GenerationDesTickets.dto.TechnicienTable;
 import com.example.GenerationDesTickets.utils.PhoneAssistantForm;
 import com.example.GenerationDesTickets.utils.ResponseMessage;
+import com.example.GenerationDesTickets.utils.TechnicienForm;
 
 import lombok.AllArgsConstructor;
 
@@ -73,15 +75,17 @@ public class SuperviseurController implements SuperviseurApi {
 	}
 
 	@Override
-	public ResponseEntity<ResponseMessage> AjouterTechnicien(PhoneAssistantForm phoneAssistantForm) {
+	public ResponseEntity<ResponseMessage> AjouterTechnicien(TechnicienForm technicienForm) {
 		// TODO Auto-generated method stub
 		Tichnicien technicien = new Tichnicien();
-		technicien.setFirstNameUti(phoneAssistantForm.getPrenom());
-		technicien.setLastNameUti(phoneAssistantForm.getNome());
-		technicien.setAdresseUti(phoneAssistantForm.getAdresse());
-		technicien.setTelephoneUti(phoneAssistantForm.getTelephone());
-		technicien.setEmailUti(phoneAssistantForm.getEmail());
-		technicien.setPasswordUti(phoneAssistantForm.getPassword());
+		technicien.setFirstNameUti(technicienForm.getPrenom());
+		technicien.setLastNameUti(technicienForm.getNome());
+		technicien.setAdresseUti(technicienForm.getAdresse());
+		technicien.setTelephoneUti(technicienForm.getTelephone());
+		technicien.setEmailUti(technicienForm.getEmail());
+		technicien.setPasswordUti(technicienForm.getPassword());
+		technicien.setTypeTech(technicienForm.getTypetechnicien());
+		technicien.setDisponsibilite(false);
 		technicien.setRole(roleRepo.findById((long) 2).get());
 		technicienRepo.save(technicien);
 		String message = "technicien ajouter avec succes ";
@@ -105,6 +109,42 @@ public class SuperviseurController implements SuperviseurApi {
 		List<TechnicienTable> technicienTable = new ArrayList();
 		for (int i = 0; i < allTechnicien.size(); i++) {
 			TechnicienTable techniciendto = new TechnicienTable();
+			techniciendto.setId(allTechnicien.get(i).getIdUti());
+			techniciendto.setNbrTicketAffeected(allTechnicien.get(i).getTicketaffecte().size());
+			techniciendto.setNbrTicketResolved(allTechnicien.get(i).getTicketresolved().size());
+			techniciendto.setNome(allTechnicien.get(i).getLastNameUti());
+			techniciendto.setPrenom(allTechnicien.get(i).getFirstNameUti());
+			techniciendto.setDesponsibilite(allTechnicien.get(i).getDisponsibilite());
+			techniciendto.setTypetech(allTechnicien.get(i).getTypeTech());
+			technicienTable.add(techniciendto);
+		}
+		return technicienTable;
+	}
+
+	@Override
+	public List<TechnicienByTypeTable> getallMaterialTechnicienDespo() {
+		// TODO Auto-generated method stub
+		List<Tichnicien> allTechnicien = technicienRepo.findTechnicienByType("Materiel");
+		List<TechnicienByTypeTable> technicienTable = new ArrayList();
+		for (int i = 0; i < allTechnicien.size(); i++) {
+			TechnicienByTypeTable techniciendto = new TechnicienByTypeTable();
+			techniciendto.setId(allTechnicien.get(i).getIdUti());
+			techniciendto.setNbrTicketAffeected(allTechnicien.get(i).getTicketaffecte().size());
+			techniciendto.setNbrTicketResolved(allTechnicien.get(i).getTicketresolved().size());
+			techniciendto.setNome(allTechnicien.get(i).getLastNameUti());
+			techniciendto.setPrenom(allTechnicien.get(i).getFirstNameUti());
+			technicienTable.add(techniciendto);
+		}
+		return technicienTable;
+	}
+
+	@Override
+	public List<TechnicienByTypeTable> getallLogicielTechnicienDespo() {
+		// TODO Auto-generated method stub
+		List<Tichnicien> allTechnicien = technicienRepo.findTechnicienByType("Logiciel");
+		List<TechnicienByTypeTable> technicienTable = new ArrayList();
+		for (int i = 0; i < allTechnicien.size(); i++) {
+			TechnicienByTypeTable techniciendto = new TechnicienByTypeTable();
 			techniciendto.setId(allTechnicien.get(i).getIdUti());
 			techniciendto.setNbrTicketAffeected(allTechnicien.get(i).getTicketaffecte().size());
 			techniciendto.setNbrTicketResolved(allTechnicien.get(i).getTicketresolved().size());

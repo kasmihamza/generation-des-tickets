@@ -9,12 +9,10 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class TechnicienTable {
+public class TechnicienByTypeTable {
 	private Long id;
 	private String nome;
 	private String prenom;
-	private Boolean desponsibilite;
-	private String typetech;
 	private int nbrTicketAffeected;
 	private int nbrTicketResolved;
 }
