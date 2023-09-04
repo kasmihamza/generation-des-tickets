@@ -32,16 +32,11 @@ import { IndexComponent } from './views/index/index.component';
 import { LandingComponent } from './views/landing/landing.component';
 import { AuthComponent } from './layouts/auth/auth.component';
 import { CandidateComponent } from './layouts/candidate/candidate.component';
-import { OffersComponent } from './views/candidate/offers/offers.component';
-import { HomeComponent } from './views/candidate/home/home.component';
-import { SettingsComponent } from './views/candidate/settings/settings.component';
 import { CandidateFooterComponent } from './components/footers/candidate-footer/candidate-footer.component';
-import { RhComponent } from './layouts/rh/rh.component';
+
 import { RhNavbarComponent } from './components/navbars/rh-navbar/rh-navbar.component';
 import { CardStatsComponent } from './components/cards/card-stats/card-stats.component';
-import { RhprofileComponent } from './views/Rh/rhprofile/rhprofile.component';
-import { RhtableComponent } from './views/Rh/rhtable/rhtable.component';
-import { OffreResultsComponent } from './views/Rh/offre-results/offre-results.component';
+
 
 
 
@@ -70,16 +65,9 @@ import { OffreResultsComponent } from './views/Rh/offre-results/offre-results.co
     LandingComponent,
     AuthComponent,
     CandidateComponent,
-    OffersComponent,
-    HomeComponent,
-    SettingsComponent,
     CandidateFooterComponent,
-    RhComponent,
     RhNavbarComponent,
     CardStatsComponent,
-    RhprofileComponent,
-    RhtableComponent,
-    OffreResultsComponent
   ],
   imports: [
     BrowserModule,
