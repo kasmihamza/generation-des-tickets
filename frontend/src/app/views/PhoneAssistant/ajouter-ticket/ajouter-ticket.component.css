@@ -1,0 +1,10 @@
+.genreType{
+    display: flex;
+    flex-direction: row;
+}
+.homme{
+    margin-right: 10px;
+}
+.radio_input{
+    margin-right: 5px;
+}
