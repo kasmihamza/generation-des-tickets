@@ -25,17 +25,22 @@ import { CardPageVisitsComponent } from './components/cards/card-page-visits/car
 import { CardProfileComponent } from './components/cards/card-profile/card-profile.component';
 import { CardSettingsComponent } from './components/cards/card-settings/card-settings.component';
 import { CardSocialTrafficComponent } from './components/cards/card-social-traffic/card-social-traffic.component';
-import { CardTableComponent } from './components/cards/card-table/card-table.component';
 import { LoginComponent } from './views/auth/login/login.component';
 import { RegisterComponent } from './views/auth/register/register.component';
 import { IndexComponent } from './views/index/index.component';
 import { LandingComponent } from './views/landing/landing.component';
 import { AuthComponent } from './layouts/auth/auth.component';
-import { CandidateComponent } from './layouts/candidate/candidate.component';
 import { CandidateFooterComponent } from './components/footers/candidate-footer/candidate-footer.component';
-
 import { RhNavbarComponent } from './components/navbars/rh-navbar/rh-navbar.component';
 import { CardStatsComponent } from './components/cards/card-stats/card-stats.component';
+import { PhoneAssistantLYComponent } from './layouts/phone-assistant-ly/phone-assistant-ly.component';
+import { SuperveseurLyComponent } from './layouts/superveseur-ly/superveseur-ly.component';
+import { TechnicienLyComponent } from './layouts/technicien-ly/technicien-ly.component';
+import { AjouterTicketComponent } from './views/PhoneAssistant/ajouter-ticket/ajouter-ticket.component';
+import { MaterielTechnicienDispoComponent } from './views/PhoneAssistant/materiel-technicien-dispo/materiel-technicien-dispo.component';
+import { LogicielTechnicienDispoComponent } from './views/PhoneAssistant/logiciel-technicien-dispo/logiciel-technicien-dispo.component';
+import { ConsulterTicketComponent } from './views/PhoneAssistant/consulter-ticket/consulter-ticket.component';
+import { HistoriqueComponent } from './views/PhoneAssistant/historique/historique.component';
 
 
 
@@ -58,16 +63,22 @@ import { CardStatsComponent } from './components/cards/card-stats/card-stats.com
     CardProfileComponent,
     CardSettingsComponent,
     CardSocialTrafficComponent,
-    CardTableComponent,
     LoginComponent,
     RegisterComponent,
     IndexComponent,
     LandingComponent,
     AuthComponent,
-    CandidateComponent,
     CandidateFooterComponent,
     RhNavbarComponent,
     CardStatsComponent,
+    PhoneAssistantLYComponent,
+    SuperveseurLyComponent,
+    TechnicienLyComponent,
+    AjouterTicketComponent,
+    MaterielTechnicienDispoComponent,
+    LogicielTechnicienDispoComponent,
+    ConsulterTicketComponent,
+    HistoriqueComponent,
   ],
   imports: [
     BrowserModule,
