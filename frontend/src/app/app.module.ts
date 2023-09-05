@@ -9,7 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { FooterComponent } from './components/footers/footer/footer.component';
 import { HeaderComponent } from './components/headers/header/header.component';
@@ -42,7 +42,8 @@ import { LogicielTechnicienDispoComponent } from './views/PhoneAssistant/logicie
 import { ConsulterTicketComponent } from './views/PhoneAssistant/consulter-ticket/consulter-ticket.component';
 import { HistoriqueComponent } from './views/PhoneAssistant/historique/historique.component';
 import { AffecterTicketComponent } from './views/PhoneAssistant/affecter-ticket/affecter-ticket.component';
-
+import { MyTicketsComponent } from './views/PhoneAssistant/my-tickets/my-tickets.component';
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -81,13 +82,16 @@ import { AffecterTicketComponent } from './views/PhoneAssistant/affecter-ticket/
     ConsulterTicketComponent,
     HistoriqueComponent,
     AffecterTicketComponent,
+    MyTicketsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule, 
     HttpClientModule,
-    CommonModule
+    CommonModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

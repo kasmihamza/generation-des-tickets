@@ -2,14 +2,12 @@ import { Component ,Input,OnInit} from '@angular/core';
 import { PhoneassistantserviceService } from '../service/phoneassistantservice.service';
 import { mytickets } from 'src/app/model/Mytickts';
 import { DatePipe } from '@angular/common';
-import { historique } from 'src/app/model/historique';
-
 @Component({
-  selector: 'app-historique',
-  templateUrl: './historique.component.html',
-  styleUrls: ['./historique.component.css']
+  selector: 'app-my-tickets',
+  templateUrl: './my-tickets.component.html',
+  styleUrls: ['./my-tickets.component.css']
 })
-export class HistoriqueComponent implements OnInit {
+export class MyTicketsComponent implements OnInit {
   ngOnInit(): void {
     this.getLogicielTech();
   }
@@ -25,14 +23,14 @@ export class HistoriqueComponent implements OnInit {
     return datePipe.transform(date, 'yy/MM/dd H:mm') || '';
   }
   private _color = "light";
-  alltickets: historique[]=[];
+  alltickets: mytickets[]=[];
   constructor(private phoneservice: PhoneassistantserviceService) {}
   changeFormatdate(dateoffre: Date){
     const formattedDateCreation: string = this.formatDate(dateoffre);
     return formattedDateCreation;
   }
   getLogicielTech(){
-    this.phoneservice.getHistorique().subscribe((res) => {
+    this.phoneservice.getMyTech().subscribe((res) => {
       this.alltickets = res;
       console.log(this.alltickets);
     });;

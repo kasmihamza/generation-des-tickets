@@ -9,7 +9,7 @@
           class="font-semibold text-lg"
           [ngClass]="color === 'light' ? 'text-blueGray-700' : 'text-white'"
         >
-          table des technicien materiel diponible
+          table de mes tickets (affected or en attente)
         </h3>
       </div>
     </div>
@@ -27,7 +27,7 @@
                 : 'bg-red-800 text-red-300 border-red-700'
             "
           >
-            first Name
+          titre
           </th>
           <th
             class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
@@ -37,7 +37,7 @@
                 : 'bg-red-800 text-red-300 border-red-700'
             "
           >
-            Last Name
+          dateCreation
           </th>
           <th
             class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
@@ -47,7 +47,7 @@
                 : 'bg-red-800 text-red-300 border-red-700'
             "
           >
-          nombre des tickets affectes
+          priorite
           </th>
           <th
             class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
@@ -56,7 +56,7 @@
                 ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
                 : 'bg-red-800 text-red-300 border-red-700'
             "
-          >nombre des tickets resolved</th>
+          >type</th>
           <th
             class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
             [ngClass]="
@@ -64,17 +64,33 @@
                 ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
                 : 'bg-red-800 text-red-300 border-red-700'
             "
-          >Affecter</th>
+          >source</th>
+          <th
+            class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+            [ngClass]="
+              color === 'light'
+                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                : 'bg-red-800 text-red-300 border-red-700'
+            "
+          >etat</th>
+          <th
+            class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+            [ngClass]="
+              color === 'light'
+                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                : 'bg-red-800 text-red-300 border-red-700'
+            "
+          >consulter</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let tech of alltech">
+        <tr *ngFor="let ticket of alltickets">
           <td
           class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
           >
             
           <div class="flex">
-            {{tech.nome}}
+          {{ticket.titre}}
         </div>
            
           </td>
@@ -82,20 +98,32 @@
             class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
           >
             <div class="flex">
-                {{tech.nome}}
+                {{ changeFormatdate(ticket.dateCreation)}}
             </div>
           </td>
           <td
             class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
           >
             <div class="flex items-center">
-                {{tech.nbrTicketAffeected}}
+                {{ticket.priorite}}
             </div>
           </td>
           <td
             class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right"
           >
-          {{tech.nbrTicketResolved}}
+          {{ticket.type}}
+        
+          </td>
+          <td
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right"
+          >
+          {{ticket.source}}
+        
+          </td>
+          <td
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right"
+          >
+          {{ticket.etat}}
         
           </td>
           <td
@@ -104,9 +132,9 @@
           <button
                 class="bg-blueGray-800 btncolor text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
                 type="button"
-                routerLink="/phoneassistant/affecterticket/{{tech.id}}"
+                routerLink="/phoneassistant/consultermyticket/{{ticket.id}}"
               >
-                affecter
+                consulter
         </button>
         
           </td>

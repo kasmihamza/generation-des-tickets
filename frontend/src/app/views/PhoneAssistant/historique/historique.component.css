@@ -1,0 +1,9 @@
+.disp{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.mxwidth{
+    max-width: 300px;
+}

@@ -26,6 +26,6 @@ export class LogicielTechnicienDispoComponent implements OnInit {
     this.phoneservice.getLogecielTech().subscribe((res) => {
       this.alltech = res;
       console.log(this.alltech);
-    });;
+    });
   }
 }
