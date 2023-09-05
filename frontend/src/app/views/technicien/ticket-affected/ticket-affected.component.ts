@@ -1,16 +1,17 @@
 import { Component ,Input,OnInit} from '@angular/core';
-import { PhoneassistantserviceService } from '../service/phoneassistantservice.service';
+
 import { DatePipe } from '@angular/common';
-import { historique } from 'src/app/model/historique';
+import { TechnicienserviceService } from '../service/technicienservice.service';
+import { affectedtickets } from 'src/app/model/technicien/tecketaffected';
 
 @Component({
-  selector: 'app-historique',
-  templateUrl: './historique.component.html',
-  styleUrls: ['./historique.component.css']
+  selector: 'app-ticket-affected',
+  templateUrl: './ticket-affected.component.html',
+  styleUrls: ['./ticket-affected.component.css']
 })
-export class HistoriqueComponent implements OnInit {
+export class TicketAffectedComponent implements OnInit {
   ngOnInit(): void {
-    this.getLogicielTech();
+    this.getaffectedTicket();
   }
   @Input()
   get color(): string {
@@ -24,14 +25,14 @@ export class HistoriqueComponent implements OnInit {
     return datePipe.transform(date, 'yy/MM/dd H:mm') || '';
   }
   private _color = "light";
-  alltickets: historique[]=[];
-  constructor(private phoneservice: PhoneassistantserviceService) {}
+  alltickets: affectedtickets[]=[];
+  constructor(private techservice: TechnicienserviceService) {}
   changeFormatdate(dateoffre: Date){
     const formattedDateCreation: string = this.formatDate(dateoffre);
     return formattedDateCreation;
   }
-  getLogicielTech(){
-    this.phoneservice.getHistorique().subscribe((res) => {
+  getaffectedTicket(){
+    this.techservice.getaffectedticket().subscribe((res) => {
       this.alltickets = res;
       console.log(this.alltickets);
     });;

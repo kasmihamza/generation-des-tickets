@@ -44,6 +44,13 @@ import { HistoriqueComponent } from './views/PhoneAssistant/historique/historiqu
 import { AffecterTicketComponent } from './views/PhoneAssistant/affecter-ticket/affecter-ticket.component';
 import { MyTicketsComponent } from './views/PhoneAssistant/my-tickets/my-tickets.component';
 import { ToastrModule } from 'ngx-toastr';
+import { TechSidebarComponent } from './components/tech-sidebar/tech-sidebar.component';
+import { SuperSidebarComponent } from './components/super-sidebar/super-sidebar.component';
+import { TicketAffectedComponent } from './views/technicien/ticket-affected/ticket-affected.component';
+import { ResolveTicketComponent } from './views/technicien/resolve-ticket/resolve-ticket.component';
+import { RejecterTicketComponent } from './views/technicien/rejecter-ticket/rejecter-ticket.component';
+import { DisponsibiliteComponent } from './views/technicien/disponsibilite/disponsibilite.component';
+import { TicketEnattenteComponent } from './views/technicien/ticket-enattente/ticket-enattente.component';
 
 
 
@@ -83,6 +90,13 @@ import { ToastrModule } from 'ngx-toastr';
     HistoriqueComponent,
     AffecterTicketComponent,
     MyTicketsComponent,
+    TechSidebarComponent,
+    SuperSidebarComponent,
+    TicketAffectedComponent,
+    ResolveTicketComponent,
+    RejecterTicketComponent,
+    DisponsibiliteComponent,
+    TicketEnattenteComponent,
   ],
   imports: [
     BrowserModule,

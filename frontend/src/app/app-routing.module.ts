@@ -9,6 +9,11 @@ import { AffecterTicketComponent } from './views/PhoneAssistant/affecter-ticket/
 import { MyTicketsComponent } from './views/PhoneAssistant/my-tickets/my-tickets.component';
 import { ConsulterTicketComponent } from './views/PhoneAssistant/consulter-ticket/consulter-ticket.component';
 import { HistoriqueComponent } from './views/PhoneAssistant/historique/historique.component';
+import { TechnicienLyComponent } from './layouts/technicien-ly/technicien-ly.component';
+import { TicketAffectedComponent } from './views/technicien/ticket-affected/ticket-affected.component';
+import { ResolveTicketComponent } from './views/technicien/resolve-ticket/resolve-ticket.component';
+import { RejecterTicketComponent } from './views/technicien/rejecter-ticket/rejecter-ticket.component';
+import { TicketEnattenteComponent } from './views/technicien/ticket-enattente/ticket-enattente.component';
 
 
 const routes: Routes = [
@@ -22,6 +27,19 @@ const routes: Routes = [
       { path: "affecterticket/:idtech", component: AffecterTicketComponent },
       { path: "alllogicieldispo", component: LogicielTechnicienDispoComponent },
       { path: "allmaterieldispo", component: MaterielTechnicienDispoComponent },
+      { path: "myticket", component: MyTicketsComponent },
+      { path: "historique", component: HistoriqueComponent },
+      { path: "consultermyticket/:idticket", component: ConsulterTicketComponent },
+    ],
+  },
+  {
+    path: "technicien",
+    component: TechnicienLyComponent,
+    children: [
+      { path: "ticketaffected", component: TicketAffectedComponent },
+      { path: "resolveticket/:idticket", component: ResolveTicketComponent },
+      { path: "rejecteticket/:idticket", component: RejecterTicketComponent },
+      { path: "ticketenattent", component: TicketEnattenteComponent },
       { path: "myticket", component: MyTicketsComponent },
       { path: "historique", component: HistoriqueComponent },
       { path: "consultermyticket/:idticket", component: ConsulterTicketComponent },
