@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import com.example.GenerationDesTickets.dto.TicketEnattenteDto;
 import com.example.GenerationDesTickets.dto.TicketsAffectedTable;
 import com.example.GenerationDesTickets.utils.AffecterTickentEnattente;
 import com.example.GenerationDesTickets.utils.Disponsibilite;
@@ -20,6 +21,9 @@ import com.example.GenerationDesTickets.utils.ResponseMessage;
 public interface TechnicienApi {
 	@GetMapping(value = "generationDesTickets/technicien/allaffectedtickets/{idtech}", produces = MediaType.APPLICATION_JSON_VALUE)
 	List<TicketsAffectedTable> getallMyaffectedTicket(@PathVariable("idtech") Long technicienid);
+
+	@GetMapping(value = "generationDesTickets/technicien/allaenattente", produces = MediaType.APPLICATION_JSON_VALUE)
+	List<TicketEnattenteDto> getallenattenteticket();
 
 	@PostMapping(value = "generationDesTickets/technicien/resolverticket", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	ResponseEntity<ResponseMessage> resolverTicket(@RequestBody ResolverTicket resolverTicket);

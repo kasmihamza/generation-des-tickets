@@ -20,6 +20,7 @@ import com.example.GenerationDesTickets.Reposetory.SourceRepo;
 import com.example.GenerationDesTickets.Reposetory.TechnicienRepo;
 import com.example.GenerationDesTickets.Reposetory.TicketRepo;
 import com.example.GenerationDesTickets.Reposetory.TypeRepo;
+import com.example.GenerationDesTickets.dto.TicketEnattenteDto;
 import com.example.GenerationDesTickets.dto.TicketsAffectedTable;
 import com.example.GenerationDesTickets.utils.AffecterTickentEnattente;
 import com.example.GenerationDesTickets.utils.Disponsibilite;
@@ -66,6 +67,23 @@ public class TechnicienController implements TechnicienApi {
 			ticket.setId(affectedTickets.get(i).getIdTick());
 			ticket.setTitre(affectedTickets.get(i).getTitreTick());
 			ticket.setPriorite(affectedTickets.get(i).getPriorete());
+			tableTickets.add(ticket);
+		}
+		return tableTickets;
+	}
+
+	@Override
+	public List<TicketEnattenteDto> getallenattenteticket() {
+		// TODO Auto-generated method stub
+		List<Ticket> affectedTickets = ticketRepo.findticketenattente();
+		List<TicketEnattenteDto> tableTickets = new ArrayList();
+		for (int i = 0; i < affectedTickets.size(); i++) {
+			TicketEnattenteDto ticket = new TicketEnattenteDto();
+			ticket.setDateCreation(affectedTickets.get(i).getDateCreationTick());
+			ticket.setId(affectedTickets.get(i).getIdTick());
+			ticket.setTitre(affectedTickets.get(i).getTitreTick());
+			ticket.setPriorite(affectedTickets.get(i).getPriorete());
+			ticket.setType(affectedTickets.get(i).getType().getNameType());
 			tableTickets.add(ticket);
 		}
 		return tableTickets;
