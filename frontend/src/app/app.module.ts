@@ -41,6 +41,7 @@ import { MaterielTechnicienDispoComponent } from './views/PhoneAssistant/materie
 import { LogicielTechnicienDispoComponent } from './views/PhoneAssistant/logiciel-technicien-dispo/logiciel-technicien-dispo.component';
 import { ConsulterTicketComponent } from './views/PhoneAssistant/consulter-ticket/consulter-ticket.component';
 import { HistoriqueComponent } from './views/PhoneAssistant/historique/historique.component';
+import { AffecterTicketComponent } from './views/PhoneAssistant/affecter-ticket/affecter-ticket.component';
 
 
 
@@ -79,6 +80,7 @@ import { HistoriqueComponent } from './views/PhoneAssistant/historique/historiqu
     LogicielTechnicienDispoComponent,
     ConsulterTicketComponent,
     HistoriqueComponent,
+    AffecterTicketComponent,
   ],
   imports: [
     BrowserModule,
