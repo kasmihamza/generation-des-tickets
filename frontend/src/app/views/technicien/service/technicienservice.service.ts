@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { affectenattent } from 'src/app/model/technicien/affecterenattent';
+import { disponsibilite } from 'src/app/model/technicien/disponsibilite';
 import { enattente } from 'src/app/model/technicien/enattente';
 import { resolvetickets } from 'src/app/model/technicien/resolveticket';
 import { affectedtickets } from 'src/app/model/technicien/tecketaffected';
@@ -37,5 +38,17 @@ export class TechnicienserviceService {
     TicketForm.technicienid=4;
     this.http.post('http://localhost:8080/generationDesTickets/technicien/rejecterticket',TicketForm)
    .subscribe()
+  }
+
+  disponsibilte(Disponsibilite:disponsibilite){
+    Disponsibilite.technicienid=7;
+    this.http.post('http://localhost:8080/generationDesTickets/technicien/diponsibilte',Disponsibilite)
+   .subscribe()
+  }
+
+  getdisponibilite(){
+    const idtech=7;
+    const url = 'http://localhost:8080/generationDesTickets/technicien/getdisponibilte/'+idtech;
+    return this.http.get<boolean>(url); 
   }
 }

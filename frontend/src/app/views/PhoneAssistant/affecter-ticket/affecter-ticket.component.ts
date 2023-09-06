@@ -23,8 +23,14 @@ export class AffecterTicketComponent implements OnInit {
     TicketForm.idTechnicien=this.techid;
     this.phoneservice.affecterTicket(TicketForm);
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-      this.router.navigate(['/phoneassistant/myticket']);
+      const urlSegments = this.routeParam.snapshot.url;
+      const segments = urlSegments.map(segment => segment.path);
+      if (segments.includes('super')) {
+        this.router.navigate(["/superviseur/myticket"]);
+      } else {
+        this.router.navigate(['/phoneassistant/myticket']);
+      }
+      this.toastr.success("affecter avec succes");
   });
-  this.toastr.success("affecter avec succes");
-  }
+}
 }

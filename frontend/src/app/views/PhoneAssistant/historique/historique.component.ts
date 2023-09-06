@@ -9,6 +9,8 @@ import { historique } from 'src/app/model/historique';
   styleUrls: ['./historique.component.css']
 })
 export class HistoriqueComponent implements OnInit {
+
+  searchvalue:string='';
   ngOnInit(): void {
     this.getLogicielTech();
   }
@@ -35,5 +37,9 @@ export class HistoriqueComponent implements OnInit {
       this.alltickets = res;
       console.log(this.alltickets);
     });;
+  }
+
+  searchMethode(){
+    console.log(this.searchvalue)
   }
 }

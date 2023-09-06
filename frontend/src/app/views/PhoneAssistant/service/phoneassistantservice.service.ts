@@ -13,15 +13,15 @@ import { historique } from 'src/app/model/historique';
 })
 export class PhoneassistantserviceService {
 
-  constructor(private routeParam: ActivatedRoute,private http : HttpClient) { }
+  constructor(private http : HttpClient) { }
 
   ajouterTicket(TicketForm:ticketForm){
-    TicketForm.idPhoneAssistant=1;
+    TicketForm.idPhoneAssistant=15;
     this.http.post('http://localhost:8080/generationDesTickets/phoneassistant/ticket/ajouter',TicketForm)
    .subscribe()
   }
   affecterTicket(TicketForm:Affecterticket){
-    TicketForm.idPhoneAssistant=1;
+    TicketForm.idPhoneAssistant=15;
     this.http.post('http://localhost:8080/generationDesTickets/phoneassistant/ticket/affecter',TicketForm)
    .subscribe()
   }
@@ -36,7 +36,7 @@ export class PhoneassistantserviceService {
   }
 
   getMyTech(){
-    const idphone=1;
+    const idphone=15;
     const url = 'http://localhost:8080/generationDesTickets/phoneassistant/allaMytickets/'+idphone;
     return this.http.get<mytickets[]>(url); 
   }

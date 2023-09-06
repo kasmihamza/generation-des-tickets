@@ -51,6 +51,10 @@ import { ResolveTicketComponent } from './views/technicien/resolve-ticket/resolv
 import { RejecterTicketComponent } from './views/technicien/rejecter-ticket/rejecter-ticket.component';
 import { DisponsibiliteComponent } from './views/technicien/disponsibilite/disponsibilite.component';
 import { TicketEnattenteComponent } from './views/technicien/ticket-enattente/ticket-enattente.component';
+import { AjouterAssistantComponent } from './views/Superviseur/ajouter-assistant/ajouter-assistant.component';
+import { AjouterTechnicienComponent } from './views/Superviseur/ajouter-technicien/ajouter-technicien.component';
+import { AllAssistantsComponent } from './views/Superviseur/all-assistants/all-assistants.component';
+import { AlltechnicienComponent } from './views/Superviseur/alltechnicien/alltechnicien.component';
 
 
 
@@ -97,6 +101,10 @@ import { TicketEnattenteComponent } from './views/technicien/ticket-enattente/ti
     RejecterTicketComponent,
     DisponsibiliteComponent,
     TicketEnattenteComponent,
+    AjouterAssistantComponent,
+    AjouterTechnicienComponent,
+    AllAssistantsComponent,
+    AlltechnicienComponent,
   ],
   imports: [
     BrowserModule,

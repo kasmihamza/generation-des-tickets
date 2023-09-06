@@ -14,6 +14,13 @@ import { TicketAffectedComponent } from './views/technicien/ticket-affected/tick
 import { ResolveTicketComponent } from './views/technicien/resolve-ticket/resolve-ticket.component';
 import { RejecterTicketComponent } from './views/technicien/rejecter-ticket/rejecter-ticket.component';
 import { TicketEnattenteComponent } from './views/technicien/ticket-enattente/ticket-enattente.component';
+import { DisponsibiliteComponent } from './views/technicien/disponsibilite/disponsibilite.component';
+import { SuperveseurLyComponent } from './layouts/superveseur-ly/superveseur-ly.component';
+import { AjouterAssistantComponent } from './views/Superviseur/ajouter-assistant/ajouter-assistant.component';
+import { AjouterTechnicienComponent } from './views/Superviseur/ajouter-technicien/ajouter-technicien.component';
+import { AlltechnicienComponent } from './views/Superviseur/alltechnicien/alltechnicien.component';
+import { allassistant } from './model/superviseur/allAssistant';
+import { AllAssistantsComponent } from './views/Superviseur/all-assistants/all-assistants.component';
 
 
 const routes: Routes = [
@@ -40,9 +47,24 @@ const routes: Routes = [
       { path: "resolveticket/:idticket", component: ResolveTicketComponent },
       { path: "rejecteticket/:idticket", component: RejecterTicketComponent },
       { path: "ticketenattent", component: TicketEnattenteComponent },
-      { path: "myticket", component: MyTicketsComponent },
+      { path: "disponsibilite", component: DisponsibiliteComponent },
       { path: "historique", component: HistoriqueComponent },
-      { path: "consultermyticket/:idticket", component: ConsulterTicketComponent },
+    ],
+  },
+  {
+    path: "superviseur",
+    component: SuperveseurLyComponent,
+    children: [
+      { path: "ajouterassistant", component: AjouterAssistantComponent },
+      { path: "ajoutertechnicien", component: AjouterTechnicienComponent },
+      { path: "super/ajouterticket", component: AjouterTicketComponent },
+      { path: "super/affecterticket/:idtech", component: AffecterTicketComponent },
+      { path: "sup/alllogicieldispo", component: LogicielTechnicienDispoComponent },
+      { path: "sup/allmaterieldispo", component: MaterielTechnicienDispoComponent },
+      { path: "allassistant", component: AllAssistantsComponent },
+      { path: "alltechnicien", component: AlltechnicienComponent },
+      { path: "historique", component: HistoriqueComponent },
+      { path: "myticket", component: MyTicketsComponent },
     ],
   },
   { path: "", component: IndexComponent },

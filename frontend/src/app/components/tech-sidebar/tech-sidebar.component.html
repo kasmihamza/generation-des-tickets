@@ -18,7 +18,7 @@
       class="md:block text-left md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0"
     >
       <span class="block sm:hidden"> Tailwind Angular </span>
-      <span class="hidden sm:block"> Espace Phone assistant  </span>
+      <span class="hidden sm:block"> Espace Technicien  </span>
     </a>
     <!-- User -->
     <ul class="md:hidden items-center flex flex-wrap list-none">
@@ -83,12 +83,12 @@
 
         <li class="items-center">
           <a
-            [routerLink]="['ajouterticket']"
+            [routerLink]="['disponsibilite']"
             class="text-xs uppercase py-3 font-bold block"
             routerLinkActive
-            #adminSettings="routerLinkActive"
+            #dispo="routerLinkActive"
             [ngClass]="
-              adminSettings.isActive
+            dispo.isActive
                 ? 'text-red-600 hover:text-red-700'
                 : 'text-blueGray-700 hover:text-blueGray-500'
             "
@@ -96,21 +96,21 @@
             <i
               class="fas fa-tools mr-2 text-sm"
               [ngClass]="
-                adminSettings.isActive ? 'opacity-75' : 'text-blueGray-300'
+              dispo.isActive ? 'opacity-75' : 'text-blueGray-300'
               "
             ></i>
-            Ajouter Ticket
+            Disponibilite
           </a>
         </li>
 
         <li class="items-center">
           <a
-            [routerLink]="['alllogicieldispo']"
+            [routerLink]="['ticketaffected']"
             class="text-xs uppercase py-3 font-bold block"
             routerLinkActive
-            #techlog="routerLinkActive"
+            #affect="routerLinkActive"
             [ngClass]="
-            techlog.isActive
+            affect.isActive
                 ? 'text-red-600 hover:text-red-700'
                 : 'text-blueGray-700 hover:text-blueGray-500'
             "
@@ -118,20 +118,20 @@
             <i
               class="fas fa-table mr-2 text-sm"
               [ngClass]="
-              techlog.isActive ? 'opacity-75' : 'text-blueGray-300'
+              affect.isActive ? 'opacity-75' : 'text-blueGray-300'
               "
             ></i>
-            Tables des technicien Logiciel
+            Tables des tickets affecteds
           </a>
         </li>
         <li class="items-center">
           <a
-            [routerLink]="['allmaterieldispo']"
+            [routerLink]="['ticketenattent']"
             class="text-xs uppercase py-3 font-bold block"
             routerLinkActive
-            #techlmat="routerLinkActive"
+            #enattente="routerLinkActive"
             [ngClass]="
-            techlmat.isActive
+            enattente.isActive
                 ? 'text-red-600 hover:text-red-700'
                 : 'text-blueGray-700 hover:text-blueGray-500'
             "
@@ -139,31 +139,10 @@
             <i
               class="fas fa-table mr-2 text-sm"
               [ngClass]="
-              techlmat.isActive ? 'opacity-75' : 'text-blueGray-300'
+              enattente.isActive ? 'opacity-75' : 'text-blueGray-300'
               "
             ></i>
-            Tables des technicien Logiciel
-          </a>
-        </li>
-        <li class="items-center">
-          <a
-            [routerLink]="['myticket']"
-            class="text-xs uppercase py-3 font-bold block"
-            routerLinkActive
-            #mutick="routerLinkActive"
-            [ngClass]="
-            mutick.isActive
-                ? 'text-red-600 hover:text-red-700'
-                : 'text-blueGray-700 hover:text-blueGray-500'
-            "
-          >
-            <i
-              class="fas fa-map-marked mr-2 text-sm"
-              [ngClass]="
-              mutick.isActive ? 'opacity-75' : 'text-blueGray-300'
-              "
-            ></i>
-            Mes tickets
+            Tables des tickets en attente
           </a>
         </li>
         <li class="items-center">

@@ -2,17 +2,20 @@
   class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded"
   [ngClass]="color === 'light' ? 'bg-white' : 'bg-red-900 text-white'"
 >
-  <div class="rounded-t mb-0 px-4 py-3 border-0">
+  <div class=" disp rounded-t mb-0 px-4 py-3 border-0">
     <div class="flex flex-wrap items-center">
       <div class="relative w-full px-4 max-w-full flex-grow flex-1">
         <h3
           class="font-semibold text-lg"
           [ngClass]="color === 'light' ? 'text-blueGray-700' : 'text-white'"
         >
-          table des technicien materiel diponible
+          table des Technicien
         </h3>
+        
       </div>
+      
     </div>
+    
   </div>
   <div class="block w-full overflow-x-auto">
     <!-- Projects table -->
@@ -27,7 +30,7 @@
                 : 'bg-red-800 text-red-300 border-red-700'
             "
           >
-            first Name
+          FirstName
           </th>
           <th
             class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
@@ -37,7 +40,7 @@
                 : 'bg-red-800 text-red-300 border-red-700'
             "
           >
-            Last Name
+          LastName
           </th>
           <th
             class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
@@ -47,7 +50,7 @@
                 : 'bg-red-800 text-red-300 border-red-700'
             "
           >
-          nombre des tickets affectes
+         Type
           </th>
           <th
             class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
@@ -56,7 +59,7 @@
                 ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
                 : 'bg-red-800 text-red-300 border-red-700'
             "
-          >nombre des tickets resolved</th>
+          >nombre des tickets affectes</th>
           <th
             class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
             [ngClass]="
@@ -64,17 +67,25 @@
                 ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
                 : 'bg-red-800 text-red-300 border-red-700'
             "
-          >Affecter</th>
+          >nombre des tickets resolves</th>
+          <th
+            class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+            [ngClass]="
+              color === 'light'
+                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                : 'bg-red-800 text-red-300 border-red-700'
+            "
+          >supprimer</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let tech of alltech">
+        <tr *ngFor="let tech of allTech">
           <td
           class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
           >
             
           <div class="flex">
-            {{tech.nome}}
+          {{tech.prenom}}
         </div>
            
           </td>
@@ -89,13 +100,23 @@
             class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
           >
             <div class="flex items-center">
-                {{tech.nbrTicketAffeected}}
+                {{tech.typetech}}
             </div>
           </td>
           <td
             class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right"
           >
-          {{tech.nbrTicketResolved}}
+          <div class="flex items-center">
+            {{tech.nbrTicketAffeected}}
+        </div>
+        
+          </td>
+          <td
+            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right"
+          >
+          <div class="flex items-center">
+            {{tech.nbrTicketResolved}}
+        </div>
         
           </td>
           <td
@@ -104,9 +125,9 @@
           <button
                 class="bg-blueGray-800 btncolor text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
                 type="button"
-                (click)="routerAffect(tech.id)"
+                (click)="onSupprimerTechnicien(tech.id)"
               >
-                affecter
+                supprimer
         </button>
         
           </td>

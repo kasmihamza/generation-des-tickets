@@ -23,6 +23,8 @@
         <input
           type="text"
           placeholder="Search here..."
+          [(ngModel)]="searchvalue"
+          (input)="searchMethode()"
           class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:ring w-full pl-10"
         />
       </div>
@@ -92,6 +94,7 @@
         <tr *ngFor="let ticket of alltickets">
           <td
           class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          *ngIf="searchvalue === '' || ticket.titre.toLowerCase().includes(searchvalue)"
           >
             
           <div class="flex">
@@ -101,6 +104,7 @@
           </td>
           <td
             class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+            *ngIf="searchvalue === '' || ticket.titre.toLowerCase().includes(searchvalue)"
           >
             <div class="flex">
                 {{ changeFormatdate(ticket.dateCreation)}}
@@ -108,6 +112,7 @@
           </td>
           <td
             class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+            *ngIf="searchvalue === '' || ticket.titre.toLowerCase().includes(searchvalue)"
           >
             <div class="flex items-center">
                 {{ changeFormatdate(ticket.dateSolution)}}
@@ -115,18 +120,21 @@
           </td>
           <td
             class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right"
+            *ngIf="searchvalue === '' || ticket.titre.toLowerCase().includes(searchvalue)"
           >
           {{ticket.type}}
         
           </td>
           <td
             class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right"
+            *ngIf="searchvalue === '' || ticket.titre.toLowerCase().includes(searchvalue)"
           >
           {{ticket.client}}
         
           </td>
           <td
             class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right"
+            *ngIf="searchvalue === '' || ticket.titre.toLowerCase().includes(searchvalue)"
           >
           <button
                 class="bg-blueGray-800 btncolor text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
