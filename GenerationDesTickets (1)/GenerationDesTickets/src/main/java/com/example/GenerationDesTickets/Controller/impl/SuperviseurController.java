@@ -9,11 +9,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.GenerationDesTickets.Controller.api.SuperviseurApi;
 import com.example.GenerationDesTickets.Models.PhoneAssistant;
+import com.example.GenerationDesTickets.Models.Superviseur;
 import com.example.GenerationDesTickets.Models.Tichnicien;
 import com.example.GenerationDesTickets.Reposetory.PhoneAssistantRepo;
 import com.example.GenerationDesTickets.Reposetory.RoleRepo;
+import com.example.GenerationDesTickets.Reposetory.SuperviseurRepo;
 import com.example.GenerationDesTickets.Reposetory.TechnicienRepo;
+import com.example.GenerationDesTickets.Reposetory.TicketRepo;
 import com.example.GenerationDesTickets.Reposetory.TypeRepo;
+import com.example.GenerationDesTickets.dto.DashbordsDto;
 import com.example.GenerationDesTickets.dto.PhoneAssistantTable;
 import com.example.GenerationDesTickets.dto.TechnicienByTypeTable;
 import com.example.GenerationDesTickets.dto.TechnicienTable;
@@ -29,7 +33,11 @@ public class SuperviseurController implements SuperviseurApi {
 	@Autowired
 	private final PhoneAssistantRepo phoneAssistantRepo;
 	@Autowired
+	private final SuperviseurRepo superviseurRepo;
+	@Autowired
 	private final TechnicienRepo technicienRepo;
+	@Autowired
+	private final TicketRepo ticketRepo;
 	@Autowired
 	private final RoleRepo roleRepo;
 	@Autowired
@@ -48,6 +56,23 @@ public class SuperviseurController implements SuperviseurApi {
 		assistant.setRole(roleRepo.findById((long) 1).get());
 		phoneAssistantRepo.save(assistant);
 		String message = "phone assistant ajouter avec succes ";
+		ResponseMessage responseMessage = new ResponseMessage(message);
+		return ResponseEntity.ok(responseMessage);
+	}
+
+	@Override
+	public ResponseEntity<ResponseMessage> AjouterSuperviseur(PhoneAssistantForm phoneAssistantForm) {
+		// TODO Auto-generated method stub
+		Superviseur superviseur = new Superviseur();
+		superviseur.setFirstNameUti(phoneAssistantForm.getPrenom());
+		superviseur.setLastNameUti(phoneAssistantForm.getNome());
+		superviseur.setAdresseUti(phoneAssistantForm.getAdresse());
+		superviseur.setEmailUti(phoneAssistantForm.getEmail());
+		superviseur.setPasswordUti(phoneAssistantForm.getPassword());
+		superviseur.setTelephoneUti(phoneAssistantForm.getTelephone());
+		superviseur.setRole(roleRepo.findById((long) 3).get());
+		superviseurRepo.save(superviseur);
+		String message = "superviseur ajouter avec succes ";
 		ResponseMessage responseMessage = new ResponseMessage(message);
 		return ResponseEntity.ok(responseMessage);
 	}
@@ -155,6 +180,30 @@ public class SuperviseurController implements SuperviseurApi {
 			technicienTable.add(techniciendto);
 		}
 		return technicienTable;
+	}
+
+	@Override
+	public DashbordsDto getaDashboards() {
+		// TODO Auto-generated method stub
+		DashbordsDto dashboard = new DashbordsDto();
+		for (int i = 1; i < 13; i++) {
+			Integer nmbrTickets = ticketRepo.countTicketsByMonthAndType(i, (long) 2);
+			if (nmbrTickets != 0) {
+				dashboard.getLogiciel().add(nmbrTickets);
+			} else {
+				dashboard.getLogiciel().add(null);
+			}
+		}
+		for (int i = 1; i < 13; i++) {
+			Integer nmbrTickets = ticketRepo.countTicketsByMonthAndType(i, (long) 1);
+			if (nmbrTickets != 0) {
+				dashboard.getMateriel().add(nmbrTickets);
+			} else {
+				dashboard.getMateriel().add(null);
+			}
+		}
+
+		return dashboard;
 	}
 
 }
