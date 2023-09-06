@@ -117,7 +117,6 @@ public class SuperviseurController implements SuperviseurApi {
 			techniciendto.setNbrTicketResolved(allTechnicien.get(i).getTicketresolved().size());
 			techniciendto.setNome(allTechnicien.get(i).getLastNameUti());
 			techniciendto.setPrenom(allTechnicien.get(i).getFirstNameUti());
-			techniciendto.setDesponsibilite(allTechnicien.get(i).getDisponsibilite());
 			techniciendto.setTypetech(allTechnicien.get(i).getTypeTech().getNameType());
 			technicienTable.add(techniciendto);
 		}

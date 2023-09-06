@@ -148,4 +148,11 @@ public class TechnicienController implements TechnicienApi {
 		return ResponseEntity.ok(responseMessage);
 	}
 
+	@Override
+	public Boolean getdiponibilite(Long technicienid) {
+		// TODO Auto-generated method stub
+		Tichnicien technicien = technicienRepo.findById(technicienid).get();
+		return technicien.getDisponsibilite();
+	}
+
 }

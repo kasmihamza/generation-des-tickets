@@ -25,6 +25,9 @@ public interface TechnicienApi {
 	@GetMapping(value = "generationDesTickets/technicien/allaenattente", produces = MediaType.APPLICATION_JSON_VALUE)
 	List<TicketEnattenteDto> getallenattenteticket();
 
+	@GetMapping(value = "generationDesTickets/technicien/getdisponibilte/{idtech}", produces = MediaType.APPLICATION_JSON_VALUE)
+	Boolean getdiponibilite(@PathVariable("idtech") Long technicienid);
+
 	@PostMapping(value = "generationDesTickets/technicien/resolverticket", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	ResponseEntity<ResponseMessage> resolverTicket(@RequestBody ResolverTicket resolverTicket);
 
