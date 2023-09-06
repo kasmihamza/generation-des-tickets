@@ -1,5 +1,8 @@
 import { Component, OnInit, AfterViewInit } from "@angular/core";
 import { Chart, LinearScale, CategoryScale, Title, Tooltip, Legend, LineController, PointElement, LineElement, ChartConfiguration, ChartType, ChartOptions } from 'chart.js';
+import { map } from "rxjs";
+import { dashboard } from "src/app/model/superviseur/Dashboards";
+import { SuoerviseurserviceService } from "src/app/views/Superviseur/service/suoerviseurservice.service";
 
 
 
@@ -9,11 +12,27 @@ import { Chart, LinearScale, CategoryScale, Title, Tooltip, Legend, LineControll
   styleUrls: ['./cardlinechart.component.css']
 })
 export class CardlinechartComponent implements OnInit , AfterViewInit{
-  constructor() {}
-
-  ngOnInit() {}
+  constructor(private superviservice: SuoerviseurserviceService) {}
+  ngOnInit() {
+    this.getdashboard();    
+  }
   ngAfterViewInit() {
     Chart.register(LinearScale, CategoryScale, Title, Tooltip, Legend, LineController, PointElement, LineElement);
+    this.getdashboard().subscribe((res) => {
+      this.dashboard = res;
+      this.renderChart(); 
+  });}
+  dashboard: dashboard = new dashboard();
+  getdashboard() {
+    return this.superviservice.getdashboard().pipe(
+      map((res: dashboard) => {
+        this.dashboard = res;
+        return res; // Return the data for further processing if needed
+      })
+    );
+  }
+
+  renderChart() {
     const scales = {
       x: {
         type: 'category',
@@ -79,7 +98,8 @@ export class CardlinechartComponent implements OnInit , AfterViewInit{
             label: "Materiel",
             backgroundColor: "#4c51bf",
             borderColor: "#4c51bf",
-            data: [65, 78, 66, 44, 56, 67, 75, 66, 44, 56, 67, 30],
+            //data: [12,10,15,25,27,32,23,40,31,29,50,52],
+            data: this.dashboard.materiel,
             fill: false,
           },
           {
@@ -87,7 +107,8 @@ export class CardlinechartComponent implements OnInit , AfterViewInit{
             fill: false,
             backgroundColor: "#fff",
             borderColor: "#fff",
-            data: [40, 68, 86, 74, 56, 60, 87, 86, 74, 56, 60, 87],
+            //data: [12,16,20,54,40,47,62,70,59,66,38,52],
+            data: this.dashboard.logiciel,
           },
         ],
       },
