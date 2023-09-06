@@ -21,6 +21,7 @@ import { AjouterTechnicienComponent } from './views/Superviseur/ajouter-technici
 import { AlltechnicienComponent } from './views/Superviseur/alltechnicien/alltechnicien.component';
 import { allassistant } from './model/superviseur/allAssistant';
 import { AllAssistantsComponent } from './views/Superviseur/all-assistants/all-assistants.component';
+import { DashbordsSupComponent } from './views/Superviseur/dashbords-sup/dashbords-sup.component';
 
 
 const routes: Routes = [
@@ -65,6 +66,7 @@ const routes: Routes = [
       { path: "alltechnicien", component: AlltechnicienComponent },
       { path: "historique", component: HistoriqueComponent },
       { path: "myticket", component: MyTicketsComponent },
+      { path: "dashbords", component: DashbordsSupComponent },
     ],
   },
   { path: "", component: IndexComponent },

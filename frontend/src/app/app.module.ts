@@ -55,6 +55,8 @@ import { AjouterAssistantComponent } from './views/Superviseur/ajouter-assistant
 import { AjouterTechnicienComponent } from './views/Superviseur/ajouter-technicien/ajouter-technicien.component';
 import { AllAssistantsComponent } from './views/Superviseur/all-assistants/all-assistants.component';
 import { AlltechnicienComponent } from './views/Superviseur/alltechnicien/alltechnicien.component';
+import { DashbordsSupComponent } from './views/Superviseur/dashbords-sup/dashbords-sup.component';
+import { CardlinechartComponent } from './components/cards/cardlinechart/cardlinechart.component';
 
 
 
@@ -105,6 +107,8 @@ import { AlltechnicienComponent } from './views/Superviseur/alltechnicien/alltec
     AjouterTechnicienComponent,
     AllAssistantsComponent,
     AlltechnicienComponent,
+    DashbordsSupComponent,
+    CardlinechartComponent,
   ],
   imports: [
     BrowserModule,
