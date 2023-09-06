@@ -80,7 +80,27 @@
       <!-- Navigation -->
 
       <ul class="md:flex-col md:min-w-full flex flex-col list-none">
-
+        <li class="items-center">
+          <a
+            [routerLink]="['dashbords']"
+            class="text-xs uppercase py-3 font-bold block"
+            routerLinkActive
+            #dashboard="routerLinkActive"
+            [ngClass]="
+            dashboard.isActive
+                ? 'text-red-600 hover:text-red-700'
+                : 'text-blueGray-700 hover:text-blueGray-500'
+            "
+          >
+            <i
+              class="fas fa-tools mr-2 text-sm"
+              [ngClass]="
+              dashboard.isActive ? 'opacity-75' : 'text-blueGray-300'
+              "
+            ></i>
+            Dashbords
+          </a>
+        </li>
         <li class="items-center">
             <a
               [routerLink]="['super/ajouterticket']"
