@@ -1,4 +1,4 @@
-export class mytickets{
+export class ModiferForm{
     idticket: number = 9;
     
     titre: string = '';
@@ -16,6 +16,5 @@ export class mytickets{
 
     adresseClient : string = '';
     nameClient: number = 9;
-    dateCreation: Date = new Date();
-    etat: string = '';
+
 }

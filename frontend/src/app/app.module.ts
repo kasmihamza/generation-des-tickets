@@ -58,6 +58,11 @@ import { AlltechnicienComponent } from './views/Superviseur/alltechnicien/alltec
 import { DashbordsSupComponent } from './views/Superviseur/dashbords-sup/dashbords-sup.component';
 import { CardlinechartComponent } from './components/cards/cardlinechart/cardlinechart.component';
 import { ConsulterHistoriqueComponent } from './views/PhoneAssistant/consulter-historique/consulter-historique.component';
+import { AjouterTicketSupComponent } from './views/Superviseur/ajouter-ticket-sup/ajouter-ticket-sup.component';
+import { AffecterTicketSupComponent } from './views/Superviseur/affecter-ticket-sup/affecter-ticket-sup.component';
+import { MyticketsSupComponent } from './views/Superviseur/mytickets-sup/mytickets-sup.component';
+import { ModifierTicketsComponent } from './views/Superviseur/modifier-tickets/modifier-tickets.component';
+import { ModifierTicketAssistantComponent } from './views/PhoneAssistant/modifier-ticket-assistant/modifier-ticket-assistant.component';
 
 
 
@@ -111,6 +116,11 @@ import { ConsulterHistoriqueComponent } from './views/PhoneAssistant/consulter-h
     DashbordsSupComponent,
     CardlinechartComponent,
     ConsulterHistoriqueComponent,
+    AjouterTicketSupComponent,
+    AffecterTicketSupComponent,
+    MyticketsSupComponent,
+    ModifierTicketsComponent,
+    ModifierTicketAssistantComponent,
   ],
   imports: [
     BrowserModule,

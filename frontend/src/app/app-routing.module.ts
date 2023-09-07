@@ -24,6 +24,11 @@ import { AllAssistantsComponent } from './views/Superviseur/all-assistants/all-a
 import { DashbordsSupComponent } from './views/Superviseur/dashbords-sup/dashbords-sup.component';
 import { LoginComponent } from './views/auth/login/login.component';
 import { ConsulterHistoriqueComponent } from './views/PhoneAssistant/consulter-historique/consulter-historique.component';
+import { AjouterTicketSupComponent } from './views/Superviseur/ajouter-ticket-sup/ajouter-ticket-sup.component';
+import { AffecterTicketSupComponent } from './views/Superviseur/affecter-ticket-sup/affecter-ticket-sup.component';
+import { MyticketsSupComponent } from './views/Superviseur/mytickets-sup/mytickets-sup.component';
+import { ModifierTicketsComponent } from './views/Superviseur/modifier-tickets/modifier-tickets.component';
+import { ModifierTicketAssistantComponent } from './views/PhoneAssistant/modifier-ticket-assistant/modifier-ticket-assistant.component';
 
 
 const routes: Routes = [
@@ -41,6 +46,7 @@ const routes: Routes = [
       { path: "historique", component: HistoriqueComponent },
       { path: "consultermyticket/:idticket", component: ConsulterTicketComponent },
       { path: "consulterhistorique/:idticket", component: ConsulterHistoriqueComponent },
+      { path: "modifierTicketassis/:idticket", component: ModifierTicketAssistantComponent },
     ],
   },
   {
@@ -61,15 +67,17 @@ const routes: Routes = [
     component: SuperveseurLyComponent,
     children: [
       { path: "ajouterassistant", component: AjouterAssistantComponent },
+      { path: "modifierTicket/:idticket", component: ModifierTicketsComponent },
       { path: "ajoutertechnicien", component: AjouterTechnicienComponent },
-      { path: "super/ajouterticket", component: AjouterTicketComponent },
-      { path: "super/affecterticket/:idtech", component: AffecterTicketComponent },
+      { path: "super/ajouterticket", component: AjouterTicketSupComponent },
+      { path: "super/affecterticket/:idtech", component: AffecterTicketSupComponent },
       { path: "sup/alllogicieldispo", component: LogicielTechnicienDispoComponent },
       { path: "sup/allmaterieldispo", component: MaterielTechnicienDispoComponent },
       { path: "allassistant", component: AllAssistantsComponent },
       { path: "alltechnicien", component: AlltechnicienComponent },
       { path: "super/historique", component: HistoriqueComponent },
-      { path: "myticket", component: MyTicketsComponent },
+      { path: "consultermyticket/:idticket", component: ConsulterTicketComponent },
+      { path: "myticket", component: MyticketsSupComponent },
       { path: "dashbords", component: DashbordsSupComponent },
       { path: "consulterhistorique/:idticket", component: ConsulterHistoriqueComponent },
     ],

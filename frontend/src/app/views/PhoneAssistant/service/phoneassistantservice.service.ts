@@ -14,8 +14,17 @@ import { historique } from 'src/app/model/historique';
 })
 export class PhoneassistantserviceService {
 
-  constructor(private http : HttpClient) { }
-
+  constructor(private http : HttpClient) { 
+    this.getMyTech().subscribe(
+      (data: mytickets[]) => {
+        this.alltickets = data;
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
+  alltickets: mytickets[]=[];
   ajouterTicket(TicketForm:ticketForm){
     TicketForm.idPhoneAssistant=10;
     this.http.post('http://localhost:8080/generationDesTickets/phoneassistant/ticket/ajouter',TicketForm)
