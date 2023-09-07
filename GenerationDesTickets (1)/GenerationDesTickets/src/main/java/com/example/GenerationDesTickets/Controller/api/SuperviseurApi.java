@@ -15,6 +15,7 @@ import com.example.GenerationDesTickets.dto.DashbordsDto;
 import com.example.GenerationDesTickets.dto.PhoneAssistantTable;
 import com.example.GenerationDesTickets.dto.TechnicienByTypeTable;
 import com.example.GenerationDesTickets.dto.TechnicienTable;
+import com.example.GenerationDesTickets.utils.Authentification;
 import com.example.GenerationDesTickets.utils.PhoneAssistantForm;
 import com.example.GenerationDesTickets.utils.ResponseMessage;
 import com.example.GenerationDesTickets.utils.TechnicienForm;
@@ -50,5 +51,8 @@ public interface SuperviseurApi {
 
 	@GetMapping(value = "generationDesTickets/Superviseur/dashboards", produces = MediaType.APPLICATION_JSON_VALUE)
 	DashbordsDto getaDashboards();
+
+	@PostMapping(value = "generationDesTickets/authentification", produces = MediaType.APPLICATION_JSON_VALUE)
+	Long authentification(@RequestBody Authentification authentification);
 
 }

@@ -11,16 +11,19 @@ import com.example.GenerationDesTickets.Controller.api.SuperviseurApi;
 import com.example.GenerationDesTickets.Models.PhoneAssistant;
 import com.example.GenerationDesTickets.Models.Superviseur;
 import com.example.GenerationDesTickets.Models.Tichnicien;
+import com.example.GenerationDesTickets.Models.Utilisateurs;
 import com.example.GenerationDesTickets.Reposetory.PhoneAssistantRepo;
 import com.example.GenerationDesTickets.Reposetory.RoleRepo;
 import com.example.GenerationDesTickets.Reposetory.SuperviseurRepo;
 import com.example.GenerationDesTickets.Reposetory.TechnicienRepo;
 import com.example.GenerationDesTickets.Reposetory.TicketRepo;
 import com.example.GenerationDesTickets.Reposetory.TypeRepo;
+import com.example.GenerationDesTickets.Reposetory.UtilisateurRepo;
 import com.example.GenerationDesTickets.dto.DashbordsDto;
 import com.example.GenerationDesTickets.dto.PhoneAssistantTable;
 import com.example.GenerationDesTickets.dto.TechnicienByTypeTable;
 import com.example.GenerationDesTickets.dto.TechnicienTable;
+import com.example.GenerationDesTickets.utils.Authentification;
 import com.example.GenerationDesTickets.utils.PhoneAssistantForm;
 import com.example.GenerationDesTickets.utils.ResponseMessage;
 import com.example.GenerationDesTickets.utils.TechnicienForm;
@@ -42,6 +45,8 @@ public class SuperviseurController implements SuperviseurApi {
 	private final RoleRepo roleRepo;
 	@Autowired
 	private final TypeRepo typeRepo;
+	@Autowired
+	private final UtilisateurRepo utilisateurRepo;
 
 	@Override
 	public ResponseEntity<ResponseMessage> AjouterPhoneAssistant(PhoneAssistantForm phoneAssistantForm) {
@@ -204,6 +209,22 @@ public class SuperviseurController implements SuperviseurApi {
 		}
 
 		return dashboard;
+	}
+
+	@Override
+	public Long authentification(Authentification authentification) {
+		// TODO Auto-generated method stub
+		Utilisateurs user = utilisateurRepo.findByEmailUtilisateur(authentification.getMail());
+		if (user != null) {
+			if (user.getPasswordUti().equals(authentification.getPasswordd())) {
+				return user.getRole().getIdRole();
+			} else {
+				return (long) 0;
+			}
+		} else {
+			return (long) 0;
+		}
+
 	}
 
 }
