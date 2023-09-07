@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { ModiferForm } from 'src/app/model/superviseur/ModifierForm';
 import { NgForm } from '@angular/forms';
 import { SuoerviseurserviceService } from '../../Superviseur/service/suoerviseurservice.service';
+import { PhoneassistantserviceService } from '../service/phoneassistantservice.service';
 
 @Component({
   selector: 'app-modifier-ticket-assistant',
@@ -12,7 +13,7 @@ import { SuoerviseurserviceService } from '../../Superviseur/service/suoerviseur
   styleUrls: ['./modifier-ticket-assistant.component.css']
 })
 export class ModifierTicketAssistantComponent implements OnInit {
-  constructor( private router: Router,private toastr: ToastrService,private routeParam: ActivatedRoute,private superviservice: SuoerviseurserviceService) {
+  constructor( private router: Router,private toastr: ToastrService,private routeParam: ActivatedRoute,private superviservice: SuoerviseurserviceService,private phoneservice: PhoneassistantserviceService) {
     
   }
   @ViewChild('TicketForm')
@@ -28,7 +29,7 @@ export class ModifierTicketAssistantComponent implements OnInit {
   ngOnInit(): void {
     this.ticketid= this.routeParam.snapshot.paramMap.get('idticket'); 
     this.ticketid = parseInt(this.ticketid, 10);
-    this.modifier=this.superviservice.alltickets.find((o)=>{ return o.idticket===this.ticketid});
+    this.modifier=this.phoneservice.alltickets.find((o)=>{ return o.idticket===this.ticketid});
     
 
     this.modifierForm.idticket=this.modifier.idticket;
@@ -60,7 +61,7 @@ export class ModifierTicketAssistantComponent implements OnInit {
     TicketForm.idticket=this.modifierForm.idticket;
     this.superviservice.ModifierTicketsup(TicketForm);
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-      this.router.navigate(["/superviseur/myticket"]);
+      this.router.navigate(["/phoneassistant/myticket"]);
       
       this.toastr.success("modifier avec succes");
   });

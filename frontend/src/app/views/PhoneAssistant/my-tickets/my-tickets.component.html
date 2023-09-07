@@ -56,22 +56,6 @@
                 ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
                 : 'bg-red-800 text-red-300 border-red-700'
             "
-          >type</th>
-          <th
-            class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
-            [ngClass]="
-              color === 'light'
-                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
-                : 'bg-red-800 text-red-300 border-red-700'
-            "
-          >source</th>
-          <th
-            class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
-            [ngClass]="
-              color === 'light'
-                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
-                : 'bg-red-800 text-red-300 border-red-700'
-            "
           >etat</th>
           <th
             class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
@@ -116,18 +100,7 @@
                 {{ticket.priorite}}
             </div>
           </td>
-          <td
-            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right"
-          >
-          {{ticket.idType}}
-        
-          </td>
-          <td
-            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right"
-          >
-          {{ticket.idSource}}
-        
-          </td>
+
           <td
             class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right"
           >

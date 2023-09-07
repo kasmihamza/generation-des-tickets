@@ -59,6 +59,7 @@ const routes: Routes = [
       { path: "ticketenattent", component: TicketEnattenteComponent },
       { path: "disponsibilite", component: DisponsibiliteComponent },
       { path: "tech/historique", component: HistoriqueComponent },
+      { path: "consultermyticket/:idticket", component: ConsulterTicketComponent },
       { path: "consulterhistorique/:idticket", component: ConsulterHistoriqueComponent },
     ],
   },

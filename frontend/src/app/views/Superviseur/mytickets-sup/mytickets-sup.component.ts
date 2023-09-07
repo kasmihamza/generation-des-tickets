@@ -34,6 +34,7 @@ export class MyticketsSupComponent implements OnInit {
   getLogicielTech(){
     this.superviservice.getMyTechsup().subscribe((res) => {
       this.alltickets = res;
+      console.log(this.alltickets)
     });
   }
 }

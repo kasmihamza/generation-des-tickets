@@ -1,7 +1,10 @@
 import { Component ,Input,OnInit} from '@angular/core';
-import { PhoneassistantserviceService } from '../service/phoneassistantservice.service';
+
 import { mytickets } from 'src/app/model/Mytickts';
 import { DatePipe } from '@angular/common';
+import { SuoerviseurserviceService } from '../../Superviseur/service/suoerviseurservice.service';
+import { PhoneassistantserviceService } from '../service/phoneassistantservice.service';
+
 @Component({
   selector: 'app-my-tickets',
   templateUrl: './my-tickets.component.html',
@@ -32,7 +35,7 @@ export class MyTicketsComponent implements OnInit {
   getLogicielTech(){
     this.phoneservice.getMyTech().subscribe((res) => {
       this.alltickets = res;
-      console.log(this.alltickets);
-    });;
+      console.log(this.alltickets)
+    });
   }
 }

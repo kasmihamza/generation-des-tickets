@@ -19,6 +19,7 @@ export class AffecterTicketComponent implements OnInit {
     this.techid= this.routeParam.snapshot.paramMap.get('idtech'); 
   }
   OnAffecteTicket(TicketForm:Affecterticket){
+    console.log(TicketForm);
     TicketForm.idTechnicien=this.techid;
     this.phoneservice.affecterTicket(TicketForm);
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
