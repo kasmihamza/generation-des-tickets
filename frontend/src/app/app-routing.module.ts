@@ -22,6 +22,8 @@ import { AlltechnicienComponent } from './views/Superviseur/alltechnicien/alltec
 import { allassistant } from './model/superviseur/allAssistant';
 import { AllAssistantsComponent } from './views/Superviseur/all-assistants/all-assistants.component';
 import { DashbordsSupComponent } from './views/Superviseur/dashbords-sup/dashbords-sup.component';
+import { LoginComponent } from './views/auth/login/login.component';
+import { ConsulterHistoriqueComponent } from './views/PhoneAssistant/consulter-historique/consulter-historique.component';
 
 
 const routes: Routes = [
@@ -38,6 +40,7 @@ const routes: Routes = [
       { path: "myticket", component: MyTicketsComponent },
       { path: "historique", component: HistoriqueComponent },
       { path: "consultermyticket/:idticket", component: ConsulterTicketComponent },
+      { path: "consulterhistorique/:idticket", component: ConsulterHistoriqueComponent },
     ],
   },
   {
@@ -49,7 +52,8 @@ const routes: Routes = [
       { path: "rejecteticket/:idticket", component: RejecterTicketComponent },
       { path: "ticketenattent", component: TicketEnattenteComponent },
       { path: "disponsibilite", component: DisponsibiliteComponent },
-      { path: "historique", component: HistoriqueComponent },
+      { path: "tech/historique", component: HistoriqueComponent },
+      { path: "consulterhistorique/:idticket", component: ConsulterHistoriqueComponent },
     ],
   },
   {
@@ -64,11 +68,13 @@ const routes: Routes = [
       { path: "sup/allmaterieldispo", component: MaterielTechnicienDispoComponent },
       { path: "allassistant", component: AllAssistantsComponent },
       { path: "alltechnicien", component: AlltechnicienComponent },
-      { path: "historique", component: HistoriqueComponent },
+      { path: "super/historique", component: HistoriqueComponent },
       { path: "myticket", component: MyTicketsComponent },
       { path: "dashbords", component: DashbordsSupComponent },
+      { path: "consulterhistorique/:idticket", component: ConsulterHistoriqueComponent },
     ],
   },
+  { path: "llogin", component: LoginComponent },
   { path: "", component: IndexComponent },
   { path: "**", redirectTo: "", pathMatch: "full" },
 ];

@@ -25,7 +25,7 @@ export class ResolveTicketComponent implements OnInit {
     TicketForm.ticketid = ticketIdAsNumber;
     this.techservice.resolverTicket(TicketForm);
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-      this.router.navigate(['/technicien/historique']);
+      this.router.navigate(['/technicien/tech/historique']);
   });
   this.toastr.success("resolver avec succes");
   }

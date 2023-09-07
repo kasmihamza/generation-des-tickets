@@ -2,6 +2,8 @@ import { Component ,Input,OnInit} from '@angular/core';
 import { PhoneassistantserviceService } from '../service/phoneassistantservice.service';
 import { DatePipe } from '@angular/common';
 import { historique } from 'src/app/model/historique';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-historique',
@@ -27,7 +29,7 @@ export class HistoriqueComponent implements OnInit {
   }
   private _color = "light";
   alltickets: historique[]=[];
-  constructor(private phoneservice: PhoneassistantserviceService) {}
+  constructor(private toastr: ToastrService,private router: Router,private routeParam: ActivatedRoute,private phoneservice: PhoneassistantserviceService) {}
   changeFormatdate(dateoffre: Date){
     const formattedDateCreation: string = this.formatDate(dateoffre);
     return formattedDateCreation;
@@ -41,5 +43,23 @@ export class HistoriqueComponent implements OnInit {
 
   searchMethode(){
     console.log(this.searchvalue)
+  }
+
+  routerAffect(id : number){
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      const urlSegments = this.routeParam.snapshot.url;
+      const segments = urlSegments.map(segment => segment.path);
+      if (segments.includes('super')) {
+        this.router.navigate(['/superviseur/consulterhistorique/'+id]);
+      }
+      else{
+        if (segments.includes('tech')) {
+          this.router.navigate(['/technicien/consulterhistorique/'+id]);
+        } else {
+          this.router.navigate(['/phoneassistant/consulterhistorique/'+id]);
+        }
+      }
+      
+  });
   }
 }

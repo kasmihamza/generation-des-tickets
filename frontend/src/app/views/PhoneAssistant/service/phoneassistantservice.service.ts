@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { consulterHistorique } from 'src/app/model/ConsulterHistorique';
 import { consulterTick } from 'src/app/model/ConsulterTickets';
 import { mytickets } from 'src/app/model/Mytickts';
 import { TechDispotable } from 'src/app/model/TableTechDispo';
@@ -16,12 +17,12 @@ export class PhoneassistantserviceService {
   constructor(private http : HttpClient) { }
 
   ajouterTicket(TicketForm:ticketForm){
-    TicketForm.idPhoneAssistant=15;
+    TicketForm.idPhoneAssistant=10;
     this.http.post('http://localhost:8080/generationDesTickets/phoneassistant/ticket/ajouter',TicketForm)
    .subscribe()
   }
   affecterTicket(TicketForm:Affecterticket){
-    TicketForm.idPhoneAssistant=15;
+    TicketForm.idPhoneAssistant=10;
     this.http.post('http://localhost:8080/generationDesTickets/phoneassistant/ticket/affecter',TicketForm)
    .subscribe()
   }
@@ -36,7 +37,7 @@ export class PhoneassistantserviceService {
   }
 
   getMyTech(){
-    const idphone=15;
+    const idphone=10;
     const url = 'http://localhost:8080/generationDesTickets/phoneassistant/allaMytickets/'+idphone;
     return this.http.get<mytickets[]>(url); 
   }
@@ -49,5 +50,10 @@ export class PhoneassistantserviceService {
   consulterTicket(id:string){
     const url = 'http://localhost:8080/generationDesTickets/phoneassistant/consulteraffected/'+id;
     return this.http.get<consulterTick>(url); 
+  }
+
+  consulterHistorique(id:string){
+    const url = 'http://localhost:8080/generationDesTickets/phoneassistant/consulterResolved/'+id;
+    return this.http.get<consulterHistorique>(url); 
   }
 }

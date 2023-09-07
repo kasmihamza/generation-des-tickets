@@ -57,6 +57,7 @@ import { AllAssistantsComponent } from './views/Superviseur/all-assistants/all-a
 import { AlltechnicienComponent } from './views/Superviseur/alltechnicien/alltechnicien.component';
 import { DashbordsSupComponent } from './views/Superviseur/dashbords-sup/dashbords-sup.component';
 import { CardlinechartComponent } from './components/cards/cardlinechart/cardlinechart.component';
+import { ConsulterHistoriqueComponent } from './views/PhoneAssistant/consulter-historique/consulter-historique.component';
 
 
 
@@ -109,6 +110,7 @@ import { CardlinechartComponent } from './components/cards/cardlinechart/cardlin
     AlltechnicienComponent,
     DashbordsSupComponent,
     CardlinechartComponent,
+    ConsulterHistoriqueComponent,
   ],
   imports: [
     BrowserModule,

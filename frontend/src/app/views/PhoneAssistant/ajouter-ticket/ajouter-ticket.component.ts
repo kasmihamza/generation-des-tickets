@@ -16,6 +16,7 @@ export class AjouterTicketComponent implements OnInit {
   selectedDepartment: string = ''; 
   ngOnInit(): void {}
   OnAjoutTicket(TicketForm:ticketForm){
+    console.log(TicketForm);
     this.phoneservice.ajouterTicket(TicketForm);
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
       const urlSegments = this.routeParam.snapshot.url;

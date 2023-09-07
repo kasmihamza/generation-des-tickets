@@ -14,7 +14,7 @@ export class TechnicienserviceService {
   constructor(private http : HttpClient) { }
 
   getaffectedticket(){
-    const idtech=4;
+    const idtech=11;
     const url = 'http://localhost:8080/generationDesTickets/technicien/allaffectedtickets/'+idtech;
     return this.http.get<affectedtickets[]>(url); 
   }
@@ -24,30 +24,30 @@ export class TechnicienserviceService {
     return this.http.get<enattente[]>(url); 
   }
   resolverTicket(TicketForm:resolvetickets){
-    TicketForm.technicienid=4;
+    TicketForm.technicienid=11;
     this.http.post('http://localhost:8080/generationDesTickets/technicien/resolverticket',TicketForm)
    .subscribe()
   }
 
   affecterticketenattente(TicketForm:affectenattent){
-    TicketForm.techid=5;
+    TicketForm.techid=11;
     this.http.post('http://localhost:8080/generationDesTickets/technicien/ajouterticketenattente',TicketForm)
    .subscribe()
   }
   rejeterTicket(TicketForm:resolvetickets){
-    TicketForm.technicienid=4;
+    TicketForm.technicienid=11;
     this.http.post('http://localhost:8080/generationDesTickets/technicien/rejecterticket',TicketForm)
    .subscribe()
   }
 
   disponsibilte(Disponsibilite:disponsibilite){
-    Disponsibilite.technicienid=7;
+    Disponsibilite.technicienid=11;
     this.http.post('http://localhost:8080/generationDesTickets/technicien/diponsibilte',Disponsibilite)
    .subscribe()
   }
 
   getdisponibilite(){
-    const idtech=7;
+    const idtech=11;
     const url = 'http://localhost:8080/generationDesTickets/technicien/getdisponibilte/'+idtech;
     return this.http.get<boolean>(url); 
   }

@@ -19,7 +19,7 @@ export class AjouterTechnicienComponent implements OnInit {
     console.log(technicien);
     this.superviservice.ajoutertechnicien(technicien);
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-      this.router.navigate(['/phoneassistant/myticket']);
+      this.router.navigate(['/superviseur/alltechnicien']);
   });
   this.toastr.success("ajouter avec succes");
   }

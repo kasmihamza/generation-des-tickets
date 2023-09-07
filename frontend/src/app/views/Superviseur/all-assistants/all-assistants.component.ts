@@ -36,7 +36,6 @@ export class AllAssistantsComponent implements OnInit {
   getassistants(){
     this.superviservice.getallassistant().subscribe((res) => {
       this.allassistant = res;
-      console.log(this.allassistant);
     });
   }
 

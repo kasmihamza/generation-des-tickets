@@ -13,10 +13,9 @@ export class AjouterAssistantComponent implements OnInit {
 
   ngOnInit(): void {}
   OnAjoutAssistant(assistant:assistantform){
-    console.log(assistant);
     this.superviservice.ajouterPhoneassistant(assistant);
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-      this.router.navigate(['/phoneassistant/myticket']);
+      this.router.navigate(['/superviseur/allassistant']);
   });
   this.toastr.success("ajouter avec succes");
   }

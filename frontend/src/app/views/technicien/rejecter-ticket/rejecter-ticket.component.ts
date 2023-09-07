@@ -25,7 +25,7 @@ export class RejecterTicketComponent implements OnInit {
     TicketForm.ticketid = ticketIdAsNumber;
     this.techservice.rejeterTicket(TicketForm);
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-      this.router.navigate(['/technicien/historique']);
+      this.router.navigate(['/technicien/tech/historique']);
   });
   this.toastr.success("rejeter avec succes");
   }

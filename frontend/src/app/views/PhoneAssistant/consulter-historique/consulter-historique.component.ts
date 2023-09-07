@@ -3,16 +3,17 @@ import { PhoneassistantserviceService } from '../service/phoneassistantservice.s
 import { ActivatedRoute } from '@angular/router';
 import { consulterTick } from 'src/app/model/ConsulterTickets';
 import { DatePipe } from '@angular/common';
+import { consulterHistorique } from 'src/app/model/ConsulterHistorique';
 
 @Component({
-  selector: 'app-consulter-ticket',
-  templateUrl: './consulter-ticket.component.html',
-  styleUrls: ['./consulter-ticket.component.css']
+  selector: 'app-consulter-historique',
+  templateUrl: './consulter-historique.component.html',
+  styleUrls: ['./consulter-historique.component.css']
 })
-export class ConsulterTicketComponent implements OnInit {
+export class ConsulterHistoriqueComponent implements OnInit {
   constructor(private routeParam: ActivatedRoute,private phoneservice: PhoneassistantserviceService) {}
   techid:any;
-  ticket: consulterTick = new consulterTick;
+  ticket: consulterHistorique = new consulterHistorique;
   ngOnInit(): void {
     this.techid= this.routeParam.snapshot.paramMap.get('idticket'); 
     this.OnConsulteTicket()}
@@ -26,7 +27,7 @@ export class ConsulterTicketComponent implements OnInit {
       return formattedDateCreation;
     }
   OnConsulteTicket(){
-    this.phoneservice.consulterTicket(this.techid).subscribe((res) => {
+    this.phoneservice.consulterHistorique(this.techid).subscribe((res) => {
       this.ticket = res;
       console.log(this.ticket);
     });

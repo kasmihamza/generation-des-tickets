@@ -18,7 +18,13 @@
       class="md:block text-left md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0"
     >
       <span class="block sm:hidden"> Tailwind Angular </span>
-      <span class="hidden sm:block"> Espace Technicien  </span>
+      <span class="hidden sm:block"> 
+        <img
+        alt="..."
+        class="w-full sizes align-middle border-none shadow-lg"
+        src="assets/img/logoTicket.jpg"
+      />  
+      </span>
     </a>
     <!-- User -->
     <ul class="md:hidden items-center flex flex-wrap list-none">
@@ -147,7 +153,7 @@
         </li>
         <li class="items-center">
           <a
-            [routerLink]="['historique']"
+            [routerLink]="['tech/historique']"
             class="text-xs uppercase py-3 font-bold block"
             routerLinkActive
             #histo="routerLinkActive"
