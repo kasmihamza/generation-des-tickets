@@ -15,10 +15,13 @@ import com.example.GenerationDesTickets.dto.DashbordsDto;
 import com.example.GenerationDesTickets.dto.PhoneAssistantTable;
 import com.example.GenerationDesTickets.dto.TechnicienByTypeTable;
 import com.example.GenerationDesTickets.dto.TechnicienTable;
+import com.example.GenerationDesTickets.utils.AffecterTicket;
 import com.example.GenerationDesTickets.utils.Authentification;
+import com.example.GenerationDesTickets.utils.ModifierTicketForm;
 import com.example.GenerationDesTickets.utils.PhoneAssistantForm;
 import com.example.GenerationDesTickets.utils.ResponseMessage;
 import com.example.GenerationDesTickets.utils.TechnicienForm;
+import com.example.GenerationDesTickets.utils.TicketForm;
 
 @CrossOrigin(origins = "http://localhost:4200")
 public interface SuperviseurApi {
@@ -54,5 +57,14 @@ public interface SuperviseurApi {
 
 	@PostMapping(value = "generationDesTickets/authentification", produces = MediaType.APPLICATION_JSON_VALUE)
 	Long authentification(@RequestBody Authentification authentification);
+
+	@PostMapping(value = "generationDesTickets/superviseur/ticket/ajouter", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	ResponseEntity<ResponseMessage> AjouterTicketsup(@RequestBody TicketForm ticketForm);
+
+	@PostMapping(value = "generationDesTickets/superviseur/ticket/affecter", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	ResponseEntity<ResponseMessage> AffecterTicketsup(@RequestBody AffecterTicket affecterTicket);
+
+	@GetMapping(value = "generationDesTickets/superviseur/allaMytickets/{idsup}", produces = MediaType.APPLICATION_JSON_VALUE)
+	List<ModifierTicketForm> getallMyTicket(@PathVariable("idsup") Long supid);
 
 }

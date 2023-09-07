@@ -1,6 +1,7 @@
 package com.example.GenerationDesTickets.Controller.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -95,6 +96,8 @@ public class TechnicienController implements TechnicienApi {
 		Ticket ticket = ticketRepo.findById(resolverTicket.getTicketid()).get();
 		ticket.setDiscriptionTechnicien(resolverTicket.getDescriptionTechnicien());
 		ticket.setEtat(etatRepo.findById((long) 3).get());
+		Date date = new Date();
+		ticket.setDateSolutionTick(date);
 		ticketRepo.saveAndFlush(ticket);
 		Tichnicien tich = technicienRepo.findById(resolverTicket.getTechnicienid()).get();
 		tich.getTicketaffecte().remove(ticket);
@@ -111,6 +114,8 @@ public class TechnicienController implements TechnicienApi {
 		Ticket ticket = ticketRepo.findById(resolverTicket.getTicketid()).get();
 		ticket.setDiscriptionTechnicien(resolverTicket.getDescriptionTechnicien());
 		ticket.setEtat(etatRepo.findById((long) 4).get());
+		Date date = new Date();
+		ticket.setDateSolutionTick(date);
 		ticketRepo.saveAndFlush(ticket);
 		Tichnicien tich = technicienRepo.findById(resolverTicket.getTechnicienid()).get();
 		tich.getTicketaffecte().remove(ticket);

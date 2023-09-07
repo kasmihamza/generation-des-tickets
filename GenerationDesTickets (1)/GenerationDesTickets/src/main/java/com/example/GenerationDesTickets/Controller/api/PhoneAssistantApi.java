@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import com.example.GenerationDesTickets.dto.ConsulterTicketAffectedEnAttenteDto;
 import com.example.GenerationDesTickets.dto.ConsulterTicketResolvedOrRejected;
 import com.example.GenerationDesTickets.dto.HistoriqueTable;
-import com.example.GenerationDesTickets.dto.TicketAjouterTable;
 import com.example.GenerationDesTickets.utils.AffecterTicket;
+import com.example.GenerationDesTickets.utils.ModifierTicketForm;
 import com.example.GenerationDesTickets.utils.ResponseMessage;
 import com.example.GenerationDesTickets.utils.TicketForm;
 
@@ -23,11 +23,14 @@ public interface PhoneAssistantApi {
 	@PostMapping(value = "generationDesTickets/phoneassistant/ticket/ajouter", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	ResponseEntity<ResponseMessage> AjouterTicket(@RequestBody TicketForm ticketForm);
 
+	@PostMapping(value = "generationDesTickets/phoneassistant/ticket/modifier", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	ResponseEntity<ResponseMessage> ModifierTicket(@RequestBody ModifierTicketForm modifierTicketForm);
+
 	@PostMapping(value = "generationDesTickets/phoneassistant/ticket/affecter", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	ResponseEntity<ResponseMessage> AffecterTicket(@RequestBody AffecterTicket affecterTicket);
 
 	@GetMapping(value = "generationDesTickets/phoneassistant/allaMytickets/{idassist}", produces = MediaType.APPLICATION_JSON_VALUE)
-	List<TicketAjouterTable> getallMyTicket(@PathVariable("idassist") Long assistid);
+	List<ModifierTicketForm> getallMyTicket(@PathVariable("idassist") Long assistid);
 
 	@GetMapping(value = "generationDesTickets/phoneassistant/consulteraffected/{idtickets}", produces = MediaType.APPLICATION_JSON_VALUE)
 	ConsulterTicketAffectedEnAttenteDto consulterAffectedOrenattenteTickets(@PathVariable("idtickets") Long ticketid);

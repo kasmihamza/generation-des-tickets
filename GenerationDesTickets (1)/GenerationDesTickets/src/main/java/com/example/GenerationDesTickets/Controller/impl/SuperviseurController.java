@@ -1,6 +1,7 @@
 package com.example.GenerationDesTickets.Controller.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,12 +9,20 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.GenerationDesTickets.Controller.api.SuperviseurApi;
+import com.example.GenerationDesTickets.Models.Client;
+import com.example.GenerationDesTickets.Models.Demandeur;
 import com.example.GenerationDesTickets.Models.PhoneAssistant;
 import com.example.GenerationDesTickets.Models.Superviseur;
 import com.example.GenerationDesTickets.Models.Tichnicien;
+import com.example.GenerationDesTickets.Models.Ticket;
 import com.example.GenerationDesTickets.Models.Utilisateurs;
+import com.example.GenerationDesTickets.Reposetory.ClientRepo;
+import com.example.GenerationDesTickets.Reposetory.DemandeurRepo;
+import com.example.GenerationDesTickets.Reposetory.DepartementRepo;
+import com.example.GenerationDesTickets.Reposetory.EtatRepo;
 import com.example.GenerationDesTickets.Reposetory.PhoneAssistantRepo;
 import com.example.GenerationDesTickets.Reposetory.RoleRepo;
+import com.example.GenerationDesTickets.Reposetory.SourceRepo;
 import com.example.GenerationDesTickets.Reposetory.SuperviseurRepo;
 import com.example.GenerationDesTickets.Reposetory.TechnicienRepo;
 import com.example.GenerationDesTickets.Reposetory.TicketRepo;
@@ -23,10 +32,13 @@ import com.example.GenerationDesTickets.dto.DashbordsDto;
 import com.example.GenerationDesTickets.dto.PhoneAssistantTable;
 import com.example.GenerationDesTickets.dto.TechnicienByTypeTable;
 import com.example.GenerationDesTickets.dto.TechnicienTable;
+import com.example.GenerationDesTickets.utils.AffecterTicket;
 import com.example.GenerationDesTickets.utils.Authentification;
+import com.example.GenerationDesTickets.utils.ModifierTicketForm;
 import com.example.GenerationDesTickets.utils.PhoneAssistantForm;
 import com.example.GenerationDesTickets.utils.ResponseMessage;
 import com.example.GenerationDesTickets.utils.TechnicienForm;
+import com.example.GenerationDesTickets.utils.TicketForm;
 
 import lombok.AllArgsConstructor;
 
@@ -42,9 +54,19 @@ public class SuperviseurController implements SuperviseurApi {
 	@Autowired
 	private final TicketRepo ticketRepo;
 	@Autowired
+	private final ClientRepo clientRepo;
+	@Autowired
+	private final DemandeurRepo demandeurRepo;
+	@Autowired
 	private final RoleRepo roleRepo;
 	@Autowired
 	private final TypeRepo typeRepo;
+	@Autowired
+	private final SourceRepo sourceRepo;
+	@Autowired
+	private final EtatRepo etatRepo;
+	@Autowired
+	private final DepartementRepo departementRepo;
 	@Autowired
 	private final UtilisateurRepo utilisateurRepo;
 
@@ -225,6 +247,129 @@ public class SuperviseurController implements SuperviseurApi {
 			return (long) 0;
 		}
 
+	}
+
+	@Override
+	public ResponseEntity<ResponseMessage> AjouterTicketsup(TicketForm ticketForm) {
+		// TODO Auto-generated method stub
+		Client client = new Client();
+		client.setAdresse(ticketForm.getAdresseClient());
+		client.setName(ticketForm.getNameClient());
+		clientRepo.save(client);
+
+		// save demandeur
+		Demandeur demandeur = new Demandeur();
+		demandeur.setFirstNameDem(ticketForm.getDemandeurfirstName());
+		demandeur.setLastNameDem(ticketForm.getDemandeurLastName());
+		demandeur.setTelephoneDem(ticketForm.getTelephoneDem());
+		demandeur.setEmailDem(ticketForm.getMailDem());
+		demandeur.setService(ticketForm.getServiceDem());
+		demandeur.setClient(client);
+		demandeurRepo.save(demandeur);
+
+		// save ticket
+		Ticket ticket = new Ticket();
+		ticket.setTitreTick(ticketForm.getTitre());
+		ticket.setDateCreationTick(ticketForm.getDateCreation());
+		ticket.setDiscriptionTick(ticketForm.getDiscription());
+		ticket.setPriorete(ticketForm.getPriorite());
+		ticket.setSource(sourceRepo.findById(ticketForm.getIdSource()).get());
+		ticket.setType(typeRepo.findById(ticketForm.getIdType()).get());
+		ticket.setEtat(etatRepo.findById((long) 2).get());
+		ticket.setDepartement(departementRepo.findById(ticketForm.getIdDepartement()).get());
+		ticket.setDemandeur(demandeur);
+		Date datecreation = new Date();
+		ticket.setDateCreationTick(datecreation);
+		ticketRepo.save(ticket);
+
+		Superviseur superviseur = superviseurRepo.findById(ticketForm.getIdPhoneAssistant()).get();
+		superviseur.getTicketAjouter().add(ticket);
+		superviseurRepo.saveAndFlush(superviseur);
+
+		String message = "ticket ajouter avec succes ";
+		ResponseMessage responseMessage = new ResponseMessage(message);
+		return ResponseEntity.ok(responseMessage);
+	}
+
+	@Override
+	public ResponseEntity<ResponseMessage> AffecterTicketsup(AffecterTicket affecterTicket) {
+		// TODO Auto-generated method stub
+		Client client = new Client();
+		client.setAdresse(affecterTicket.getAdresseClient());
+		client.setName(affecterTicket.getNameClient());
+		clientRepo.save(client);
+
+		// save demandeur
+		Demandeur demandeur = new Demandeur();
+		demandeur.setFirstNameDem(affecterTicket.getDemandeurfirstName());
+		demandeur.setLastNameDem(affecterTicket.getDemandeurLastName());
+		demandeur.setTelephoneDem(affecterTicket.getTelephoneDem());
+		demandeur.setEmailDem(affecterTicket.getMailDem());
+		demandeur.setService(affecterTicket.getServiceDem());
+		demandeur.setClient(client);
+		demandeurRepo.save(demandeur);
+
+		// save ticket
+		Ticket ticket = new Ticket();
+		ticket.setTitreTick(affecterTicket.getTitre());
+		ticket.setDateCreationTick(affecterTicket.getDateCreation());
+		ticket.setDiscriptionTick(affecterTicket.getDiscription());
+		ticket.setPriorete(affecterTicket.getPriorite());
+		ticket.setSource(sourceRepo.findById(affecterTicket.getIdSource()).get());
+		ticket.setType(typeRepo.findById(affecterTicket.getIdType()).get());
+		ticket.setEtat(etatRepo.findById((long) 1).get());
+		ticket.setDepartement(departementRepo.findById(affecterTicket.getIdDepartement()).get());
+		ticket.setDemandeur(demandeur);
+		Date dateaffectation = new Date();
+		ticket.setDateAffectationTick(dateaffectation);
+		ticket.setDateCreationTick(dateaffectation);
+		ticketRepo.save(ticket);
+
+		Superviseur superviseur = superviseurRepo.findById(affecterTicket.getIdPhoneAssistant()).get();
+		superviseur.getTicketAjouter().add(ticket);
+		superviseurRepo.saveAndFlush(superviseur);
+
+		Tichnicien technicien = technicienRepo.findById(affecterTicket.getIdTechnicien()).get();
+		technicien.getTicketaffecte().add(ticket);
+		technicienRepo.saveAndFlush(technicien);
+		String message = "ticket affected au technicien " + technicien.getLastNameUti() + " avec succes ";
+		ResponseMessage responseMessage = new ResponseMessage(message);
+		return ResponseEntity.ok(responseMessage);
+	}
+
+	@Override
+	public List<ModifierTicketForm> getallMyTicket(Long supid) {
+		// TODO Auto-generated method stub
+		Superviseur phoneAssistant = superviseurRepo.findById(supid).get();
+		List<Ticket> tickets = phoneAssistant.getTicketAjouter();
+		List<Ticket> ticketsaffectedOrenattente = new ArrayList();
+		for (int j = 0; j < tickets.size(); j++) {
+			if (tickets.get(j).getEtat().getIdEtat() == 1 || tickets.get(j).getEtat().getIdEtat() == 2) {
+				ticketsaffectedOrenattente.add(tickets.get(j));
+			}
+		}
+		List<ModifierTicketForm> ticketsTable = new ArrayList();
+		for (int i = 0; i < ticketsaffectedOrenattente.size(); i++) {
+			ModifierTicketForm ticketAjouter = new ModifierTicketForm();
+			ticketAjouter.setAdresseClient(ticketsaffectedOrenattente.get(i).getDemandeur().getClient().getAdresse());
+			ticketAjouter.setDemandeurfirstName(ticketsaffectedOrenattente.get(i).getDemandeur().getFirstNameDem());
+			ticketAjouter.setDemandeurLastName(ticketsaffectedOrenattente.get(i).getDemandeur().getLastNameDem());
+			ticketAjouter.setDiscription(ticketsaffectedOrenattente.get(i).getDiscriptionTick());
+			ticketAjouter.setIdDepartement(ticketsaffectedOrenattente.get(i).getDepartement().getIdDep());
+			ticketAjouter.setIdSource(ticketsaffectedOrenattente.get(i).getSource().getIdSource());
+			ticketAjouter.setIdticket(ticketsaffectedOrenattente.get(i).getIdTick());
+			ticketAjouter.setIdType(ticketsaffectedOrenattente.get(i).getType().getIdType());
+			ticketAjouter.setMailDem(ticketsaffectedOrenattente.get(i).getDemandeur().getEmailDem());
+			ticketAjouter.setNameClient(ticketsaffectedOrenattente.get(i).getDemandeur().getClient().getName());
+			ticketAjouter.setPriorite(ticketsaffectedOrenattente.get(i).getPriorete());
+			ticketAjouter.setServiceDem(ticketsaffectedOrenattente.get(i).getDemandeur().getService());
+			ticketAjouter.setTelephoneDem(ticketsaffectedOrenattente.get(i).getDemandeur().getTelephoneDem());
+			ticketAjouter.setTitre(ticketsaffectedOrenattente.get(i).getTitreTick());
+			ticketAjouter.setDateCreation(ticketsaffectedOrenattente.get(i).getDateCreationTick());
+			ticketAjouter.setEtat(ticketsaffectedOrenattente.get(i).getEtat().getStatutEtat());
+			ticketsTable.add(ticketAjouter);
+		}
+		return ticketsTable;
 	}
 
 }
