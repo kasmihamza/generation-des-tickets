@@ -257,6 +257,9 @@ public class PhoneAssistantController implements PhoneAssistantApi {
 		consultTicket.setNameclient(ticket.getDemandeur().getClient().getName());
 		consultTicket.setDateSolution(ticket.getDateSolutionTick());
 		consultTicket.setDescriptionTechnicien(ticket.getDiscriptionTechnicien());
+		Tichnicien tech = technicienRepo.findTichnicienByTicketId(ticketid);
+		consultTicket.setFirstnametech(tech.getFirstNameUti());
+		consultTicket.setLastnametech(tech.getLastNameUti());
 		return consultTicket;
 
 	}

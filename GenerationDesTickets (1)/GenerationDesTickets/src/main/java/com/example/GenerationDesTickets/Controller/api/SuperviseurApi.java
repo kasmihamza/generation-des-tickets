@@ -17,6 +17,8 @@ import com.example.GenerationDesTickets.dto.TechnicienByTypeTable;
 import com.example.GenerationDesTickets.dto.TechnicienTable;
 import com.example.GenerationDesTickets.utils.AffecterTicket;
 import com.example.GenerationDesTickets.utils.Authentification;
+import com.example.GenerationDesTickets.utils.ModieifierAssistant;
+import com.example.GenerationDesTickets.utils.ModifierTechnicien;
 import com.example.GenerationDesTickets.utils.ModifierTicketForm;
 import com.example.GenerationDesTickets.utils.PhoneAssistantForm;
 import com.example.GenerationDesTickets.utils.ResponseMessage;
@@ -67,4 +69,9 @@ public interface SuperviseurApi {
 	@GetMapping(value = "generationDesTickets/superviseur/allaMytickets/{idsup}", produces = MediaType.APPLICATION_JSON_VALUE)
 	List<ModifierTicketForm> getallMyTicket(@PathVariable("idsup") Long supid);
 
+	@PostMapping(value = "generationDesTickets/superviseur/assistant/modifier", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	ResponseEntity<ResponseMessage> ModifierAssistant(@RequestBody ModieifierAssistant modieifierAssistant);
+
+	@PostMapping(value = "generationDesTickets/superviseur/technicien/modifier", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	ResponseEntity<ResponseMessage> ModifierTechnicien(@RequestBody ModifierTechnicien modifierTechnicien);
 }

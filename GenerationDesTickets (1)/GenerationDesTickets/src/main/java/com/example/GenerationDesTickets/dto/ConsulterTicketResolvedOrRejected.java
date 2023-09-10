@@ -31,4 +31,6 @@ public class ConsulterTicketResolvedOrRejected {
 	private String service;
 	private String adresseclient;
 	private String nameclient;
+	private String firstnametech;
+	private String lastnametech;
 }

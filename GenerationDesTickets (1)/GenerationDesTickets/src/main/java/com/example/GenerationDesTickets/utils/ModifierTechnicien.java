@@ -1,4 +1,4 @@
-package com.example.GenerationDesTickets.dto;
+package com.example.GenerationDesTickets.utils;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,13 +9,15 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class PhoneAssistantTable {
-	private Long id;
-	private String nome;
-	private String prenom;
+public class ModifierTechnicien {
+	private Long idtech;
+
+	private String firstname;
+	private String lastname;
 	private String telephone;
 	private String adresse;
 	private String email;
 	private String password;
-	private int nbrTicketAjouter;
+	private Long typeid;
+
 }

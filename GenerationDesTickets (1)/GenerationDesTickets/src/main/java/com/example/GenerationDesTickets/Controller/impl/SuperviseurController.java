@@ -34,6 +34,8 @@ import com.example.GenerationDesTickets.dto.TechnicienByTypeTable;
 import com.example.GenerationDesTickets.dto.TechnicienTable;
 import com.example.GenerationDesTickets.utils.AffecterTicket;
 import com.example.GenerationDesTickets.utils.Authentification;
+import com.example.GenerationDesTickets.utils.ModieifierAssistant;
+import com.example.GenerationDesTickets.utils.ModifierTechnicien;
 import com.example.GenerationDesTickets.utils.ModifierTicketForm;
 import com.example.GenerationDesTickets.utils.PhoneAssistantForm;
 import com.example.GenerationDesTickets.utils.ResponseMessage;
@@ -124,6 +126,10 @@ public class SuperviseurController implements SuperviseurApi {
 			phoneAssistantdto.setNbrTicketAjouter(allPhoneAssistant.get(i).getTicketAjouter().size());
 			phoneAssistantdto.setNome(allPhoneAssistant.get(i).getLastNameUti());
 			phoneAssistantdto.setPrenom(allPhoneAssistant.get(i).getFirstNameUti());
+			phoneAssistantdto.setTelephone(allPhoneAssistant.get(i).getTelephoneUti());
+			phoneAssistantdto.setAdresse(allPhoneAssistant.get(i).getAdresseUti());
+			phoneAssistantdto.setEmail(allPhoneAssistant.get(i).getEmailUti());
+			phoneAssistantdto.setPassword(allPhoneAssistant.get(i).getPasswordUti());
 			phoneAssistantTable.add(phoneAssistantdto);
 		}
 		return phoneAssistantTable;
@@ -170,6 +176,11 @@ public class SuperviseurController implements SuperviseurApi {
 			techniciendto.setNome(allTechnicien.get(i).getLastNameUti());
 			techniciendto.setPrenom(allTechnicien.get(i).getFirstNameUti());
 			techniciendto.setTypetech(allTechnicien.get(i).getTypeTech().getNameType());
+			techniciendto.setAdresse(allTechnicien.get(i).getAdresseUti());
+			techniciendto.setTelephone(allTechnicien.get(i).getTelephoneUti());
+			techniciendto.setEmail(allTechnicien.get(i).getEmailUti());
+			techniciendto.setPassword(allTechnicien.get(i).getPasswordUti());
+			techniciendto.setIdtype(allTechnicien.get(i).getTypeTech().getIdType());
 			technicienTable.add(techniciendto);
 		}
 		return technicienTable;
@@ -370,6 +381,39 @@ public class SuperviseurController implements SuperviseurApi {
 			ticketsTable.add(ticketAjouter);
 		}
 		return ticketsTable;
+	}
+
+	@Override
+	public ResponseEntity<ResponseMessage> ModifierAssistant(ModieifierAssistant modieifierAssistant) {
+		// TODO Auto-generated method stub
+		PhoneAssistant assistant = phoneAssistantRepo.findById(modieifierAssistant.getIdassis()).get();
+		assistant.setFirstNameUti(modieifierAssistant.getFirstname());
+		assistant.setLastNameUti(modieifierAssistant.getLastname());
+		assistant.setEmailUti(modieifierAssistant.getEmail());
+		assistant.setPasswordUti(modieifierAssistant.getPassword());
+		assistant.setTelephoneUti(modieifierAssistant.getTelephone());
+		assistant.setAdresseUti(modieifierAssistant.getAdresse());
+		phoneAssistantRepo.saveAndFlush(assistant);
+		String message = "assistant modifier avec succes ";
+		ResponseMessage responseMessage = new ResponseMessage(message);
+		return ResponseEntity.ok(responseMessage);
+	}
+
+	@Override
+	public ResponseEntity<ResponseMessage> ModifierTechnicien(ModifierTechnicien modifierTechnicien) {
+		// TODO Auto-generated method stub
+		Tichnicien tech = technicienRepo.findById(modifierTechnicien.getIdtech()).get();
+		tech.setFirstNameUti(modifierTechnicien.getFirstname());
+		tech.setLastNameUti(modifierTechnicien.getLastname());
+		tech.setEmailUti(modifierTechnicien.getEmail());
+		tech.setPasswordUti(modifierTechnicien.getPassword());
+		tech.setTelephoneUti(modifierTechnicien.getTelephone());
+		tech.setAdresseUti(modifierTechnicien.getAdresse());
+		tech.setTypeTech(typeRepo.findById(modifierTechnicien.getTypeid()).get());
+		technicienRepo.saveAndFlush(tech);
+		String message = "technicien modifier avec succes ";
+		ResponseMessage responseMessage = new ResponseMessage(message);
+		return ResponseEntity.ok(responseMessage);
 	}
 
 }

@@ -144,6 +144,8 @@ public class TechnicienController implements TechnicienApi {
 		// TODO Auto-generated method stub
 		Ticket ticket = ticketRepo.findById(affecterTickentEnattente.getTicketid()).get();
 		ticket.setEtat(etatRepo.findById((long) 1).get());
+		Date dateaffectation = new Date();
+		ticket.setDateAffectationTick(dateaffectation);
 		ticketRepo.saveAndFlush(ticket);
 		Tichnicien tich = technicienRepo.findById(affecterTickentEnattente.getTechid()).get();
 		tich.getTicketaffecte().add(ticket);
