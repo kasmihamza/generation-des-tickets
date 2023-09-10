@@ -63,6 +63,8 @@ import { AffecterTicketSupComponent } from './views/Superviseur/affecter-ticket-
 import { MyticketsSupComponent } from './views/Superviseur/mytickets-sup/mytickets-sup.component';
 import { ModifierTicketsComponent } from './views/Superviseur/modifier-tickets/modifier-tickets.component';
 import { ModifierTicketAssistantComponent } from './views/PhoneAssistant/modifier-ticket-assistant/modifier-ticket-assistant.component';
+import { ModifierAssistantComponent } from './views/Superviseur/modifier-assistant/modifier-assistant.component';
+import { ModifierTechnicienComponent } from './views/Superviseur/modifier-technicien/modifier-technicien.component';
 
 
 
@@ -121,6 +123,8 @@ import { ModifierTicketAssistantComponent } from './views/PhoneAssistant/modifie
     MyticketsSupComponent,
     ModifierTicketsComponent,
     ModifierTicketAssistantComponent,
+    ModifierAssistantComponent,
+    ModifierTechnicienComponent,
   ],
   imports: [
     BrowserModule,

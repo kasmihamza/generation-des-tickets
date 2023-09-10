@@ -97,7 +97,12 @@
             class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
           >
             <div class="flex items-center">
-                {{ticket.priorite}}
+                <ng-container *ngIf=" ticket.priorite ; else notAffected">
+            Urgente
+                </ng-container>
+                <ng-template #notAffected>
+                   Pas Urgente
+                </ng-template>
             </div>
           </td>
           <td

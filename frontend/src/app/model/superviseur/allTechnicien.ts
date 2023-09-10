@@ -7,5 +7,9 @@ export class allTech{
     typetech:string = '';
     nbrTicketAffeected: number = 2;
     nbrTicketResolved: number = 2;
+    email: string = '';
+    password: string = '';
+    telephone: string = '';
+    adresse: string = '';
     
 }

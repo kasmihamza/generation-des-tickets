@@ -2,7 +2,6 @@ import { Component , OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { SuoerviseurserviceService } from '../service/suoerviseurservice.service';
-import { assistantform } from 'src/app/model/superviseur/ajouterassistant';
 import { ajouterTechnicien } from 'src/app/model/superviseur/ajouterTechnicien';
 
 @Component({

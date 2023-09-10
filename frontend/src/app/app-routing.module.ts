@@ -29,6 +29,9 @@ import { AffecterTicketSupComponent } from './views/Superviseur/affecter-ticket-
 import { MyticketsSupComponent } from './views/Superviseur/mytickets-sup/mytickets-sup.component';
 import { ModifierTicketsComponent } from './views/Superviseur/modifier-tickets/modifier-tickets.component';
 import { ModifierTicketAssistantComponent } from './views/PhoneAssistant/modifier-ticket-assistant/modifier-ticket-assistant.component';
+import { ModifierAssist } from './model/superviseur/modifierassist';
+import { ModifierAssistantComponent } from './views/Superviseur/modifier-assistant/modifier-assistant.component';
+import { ModifierTechnicienComponent } from './views/Superviseur/modifier-technicien/modifier-technicien.component';
 
 
 const routes: Routes = [
@@ -81,6 +84,8 @@ const routes: Routes = [
       { path: "myticket", component: MyticketsSupComponent },
       { path: "dashbords", component: DashbordsSupComponent },
       { path: "consulterhistorique/:idticket", component: ConsulterHistoriqueComponent },
+      { path: "modifierassistant/:idassistant", component: ModifierAssistantComponent },
+      { path: "modifiertech/:idtechnicien", component: ModifierTechnicienComponent },
     ],
   },
   { path: "llogin", component: LoginComponent },

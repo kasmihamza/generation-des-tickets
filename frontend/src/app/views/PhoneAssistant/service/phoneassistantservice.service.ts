@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { consulterHistorique } from 'src/app/model/ConsulterHistorique';
 import { consulterTick } from 'src/app/model/ConsulterTickets';
 import { mytickets } from 'src/app/model/Mytickts';
