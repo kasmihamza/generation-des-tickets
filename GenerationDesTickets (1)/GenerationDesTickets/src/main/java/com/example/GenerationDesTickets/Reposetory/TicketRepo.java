@@ -14,4 +14,13 @@ public interface TicketRepo extends JpaRepository<Ticket, Long> {
 
 	@Query("SELECT COUNT(t) FROM Ticket t WHERE MONTH(t.dateCreationTick) = :month AND t.type.idType = :typeId")
 	Integer countTicketsByMonthAndType(@Param("month") int month, @Param("typeId") Long typeId);
+
+	@Query("SELECT COUNT(t) FROM Ticket t")
+	Integer countAllTickets();
+
+	@Query("SELECT COUNT(t) FROM Ticket t WHERE MONTH(t.dateCreationTick) = MONTH(CURRENT_DATE)")
+	Integer countTicketsByPresentMonth();
+
+	@Query("SELECT COUNT(t) FROM Ticket t WHERE  t.type.idType = :typeId")
+	Integer countTicketsByType(@Param("typeId") Long typeId);
 }
