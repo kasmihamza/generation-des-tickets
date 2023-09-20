@@ -41,8 +41,8 @@ export class AlltechnicienComponent implements OnInit {
 
   onSupprimerTechnicien(id:number){
     Swal.fire({
-      title:'te veut vraiment supprimer cette technicien?' ,
-      text: 'tu ne pas recevoir cette technicien',
+      title:'voulez-vous vraiment retirer ce technicien?' ,
+      
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'oui',

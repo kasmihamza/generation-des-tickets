@@ -41,8 +41,7 @@ export class AllAssistantsComponent implements OnInit {
 
   onSupprimerAssistant(id:number){
     Swal.fire({
-      title:'te veut vraiment supprimer cette phone assistant?' ,
-      text: 'tu ne pas recevoir cette phone assistant',
+      title:'voulez-vous vraiment retirer ce phone assistant?' ,
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'oui',
